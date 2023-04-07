@@ -1,0 +1,13 @@
+{
+    "launch": {
+        
+
+
+        "configurations": [],
+        "compounds": []
+    },
+    "path-intellisense.mappings": {
+    
+    },
+    "typescript.disableAutomaticTypeAcquisition": true
+}
