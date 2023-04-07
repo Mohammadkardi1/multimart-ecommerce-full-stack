@@ -85,7 +85,7 @@ export const Login = () => {
                                                     message: "Please Enter A Valid Email"
                                                 }
                                             })}/>
-                                        <p className={`mt-2 text-start error-message  ${errors.email?.message ? "visible" : "invisible"}`}>
+                                        <p className={`mt-2 text-start error-message  ${errors.email?.message ? "d-block" : "d-none"}`}>
                                             {errors.email?.message}!
                                         </p>
                                     </FormGroup>
@@ -106,7 +106,7 @@ export const Login = () => {
                                                 }
                                             })}
                                             />
-                                            <p className={`mt-2 text-start error-message ${errors.password?.message ? "visible" : "invisible"}`}>
+                                            <p className={`mt-2 text-start error-message ${errors.password?.message ? "d-block" : "d-none"}`}>
                                                 {errors.password?.message}!
                                             </p>
                                     </FormGroup>
@@ -116,7 +116,7 @@ export const Login = () => {
                                     </button>
 
                                     <div className='text-center'>
-                                        <p className={`error-message ${logInError ? "visible" : "invisible"}`}>
+                                        <p className={`error-message ${logInError ? "d-block" : "d-none"}`}>
                                             {logInError}
                                         </p>
                                     </div>

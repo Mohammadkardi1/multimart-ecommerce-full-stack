@@ -130,7 +130,7 @@ export const Signup = () => {
                                                     message: "username must be at least 5 characters long"
                                                 }
                                             })}/>
-                                            <p className={`mt-2 text-start error-message ${errors.username?.message ? "visible" : "invisible"}`}>
+                                            <p className={`mt-2 text-start error-message ${errors.username?.message ? "d-block" : "d-none"}`}>
                                                 {errors.username?.message}
                                             </p>
                                     </FormGroup>
@@ -149,7 +149,7 @@ export const Signup = () => {
                                                     message: "Please Enter A Valid Email"
                                                 }
                                             })}/>
-                                            <p className={`mt-2 text-start error-message ${errors.email?.message ? "visible" : "invisible"}`}>
+                                            <p className={`mt-2 text-start error-message ${errors.email?.message ? "d-block" : "d-none"}`}>
                                                 {errors.email?.message}
                                             </p>
                                     </FormGroup>
@@ -169,7 +169,7 @@ export const Signup = () => {
                                                 }
                                             })}
                                             />
-                                            <p className={`mt-2 text-start error-message ${errors.password?.message ? "visible" : "invisible"}`}>
+                                            <p className={`mt-2 text-start error-message ${errors.password?.message ? "d-block" : "d-none"}`}>
                                                 {errors.password?.message}!
                                             </p>
                                     </FormGroup>
@@ -190,7 +190,7 @@ export const Signup = () => {
                                             )}
                                         />
                                         {errors.image && <span>Please upload a valid image file (jpg or png)</span>}
-                                        <p className={`mt-2 text-start error-message ${errors.file?.message ? "visible" : "invisible"}`} >
+                                        <p className={`mt-2 text-start error-message ${errors.file?.message ? "d-block" : "d-none"}`} >
                                             {errors.file?.message}!
                                         </p>
                                     </FormGroup>
