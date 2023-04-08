@@ -3,7 +3,6 @@
     padding: 40px;
     border-radius: 5px ;
 }
-
 .log__btn {
     background: #fff;
     color: var(--primary-color);
@@ -15,7 +14,6 @@
 .auth__form p a {
     color: #fff;
 }
-
 .auth__form input[type='file'] {
     color: #fff;
 }

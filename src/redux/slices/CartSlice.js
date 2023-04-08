@@ -14,8 +14,6 @@ const CartSlice = createSlice({
             const newItem = action.payload; 
             const existingItem = state.cartItems.find(item => item.id === newItem.id)
             // console.log(newItem)
-
-            
             if (!existingItem) {
                 state.cartItems.push({
                     id: newItem.id,
@@ -29,7 +27,6 @@ const CartSlice = createSlice({
                 existingItem.quantity ++
                 existingItem.price = Number(newItem.price) + Number(existingItem.price)
             }
-
             state.totalQuantity ++
             state.totalAmount = state.cartItems.reduce((total, item) => {
                 return  total + Number(item.price)
@@ -41,11 +38,8 @@ const CartSlice = createSlice({
             const indexOfProduct = state.cartItems.findIndex(item => item.id === id)
             console.log( "deletedItem.price")
             console.log(Number(state.cartItems[indexOfProduct].price))
-
-
             state.totalAmount = state.totalAmount - (Number(state.cartItems[indexOfProduct].price ) / state.cartItems[indexOfProduct].quantity)
             state.totalQuantity --
-
             if (state.cartItems[indexOfProduct].quantity === 1 ) {
                 state.cartItems = state.cartItems.filter(item => item.id !== id)
                 // state.cartItems.splice(indexOfProduct,1)
@@ -53,13 +47,6 @@ const CartSlice = createSlice({
                 state.cartItems[indexOfProduct].price =  state.cartItems[indexOfProduct].price - (Number(state.cartItems[indexOfProduct].price) / state.cartItems[indexOfProduct].quantity)
                 state.cartItems[indexOfProduct].quantity --
             }
-
-            // if ()
-
-            // Delete the item from array 
-            // 
-
-
         }
     }
 });
@@ -67,25 +54,3 @@ const CartSlice = createSlice({
 export const cartActions = CartSlice.actions
 
 export default CartSlice.reducer
-
-
-
-// if you want to delete an intm from list, you should handle  
-//    1- cartItems: []
-//    2- totalAmount: 0,
-//    3- totalQuantity: 0 
-// 
-// 
-//  regarding to cartItems:  (the element is already exist in the cartItems)
-//  
-//  if qty is more than 1 
-//      - decrease quantity
-//      - decrease  price 
-//      - decrease totalAmount
-//      - decrase totalQuantity
-// 
-// 
-//  else if qty is equals to 1   
-//      - then delete the elemnt from list 
-//      - decrease totalAmount
-//      - decrase totalQuantity

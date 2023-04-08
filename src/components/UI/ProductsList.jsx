@@ -12,7 +12,6 @@ const ProductsList = ({data}) => {
                 <ProductCard item={item} key={index}/>
             ))
         }
-            
         </>
     )
 }

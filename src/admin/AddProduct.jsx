@@ -19,11 +19,9 @@ export const AddProduct = () => {
     const [productImg, setProductImg] = useState(null)
     const [loading, setLoading ] = useState(false)
 
-    
     const addProduct = async (e) => {
         e.preventDefault()
         setLoading(true)
-        
         try {
             const collectionRef =  collection(db, 'products')
             const storageref = ref(storage, `products/${Date.now() + productImg.name }`)
@@ -50,7 +48,6 @@ export const AddProduct = () => {
                         })
                         setLoading(false)
                         toast.success('The product has been added successfully')
-
                     } catch (err) {
                         toast.error('Failed to add product');
                         setLoading(false)
@@ -78,7 +75,6 @@ export const AddProduct = () => {
                         </Col> :
                         <Col lg="12">
                         <Form onSubmit={addProduct}>
-
                             <FormGroup className="form__group">
                                 <span>Product Name</span>
                                 <input 
@@ -88,7 +84,6 @@ export const AddProduct = () => {
                                     onChange={(e) => setProductName(e.target.value)}
                                     required/>
                             </FormGroup>
-
                             <FormGroup className="form__group">
                                 <span>Short Description</span>
                                 <input 
@@ -98,7 +93,6 @@ export const AddProduct = () => {
                                     onChange={(e) => setShortDesc(e.target.value)}
                                     required/>
                             </FormGroup>
-
                             <FormGroup className="form__group">
                                 <span>Description</span>
                                 <textarea
@@ -109,7 +103,6 @@ export const AddProduct = () => {
                                     onChange={(e) => setDescription(e.target.value)}
                                     required/>
                             </FormGroup>
-
                             <div className='d-flex align-items-center justify-content-between gap-5'>
                                 <FormGroup className="form__group w-50">
                                     <span>Price</span>
@@ -120,7 +113,6 @@ export const AddProduct = () => {
                                         onChange={(e) => setPrice(e.target.value)}
                                         required/>
                                 </FormGroup>
-
                                 <FormGroup className="form__group w-50">
                                     <span>Category</span>
                                     <select 
@@ -144,8 +136,6 @@ export const AddProduct = () => {
                                         onChange={(e) => setProductImg(e.target.files[0])}
                                         required />
                             </FormGroup>
-
-
                             <button 
                                 className='shop__btn'
                                 type='submit'>
@@ -154,8 +144,6 @@ export const AddProduct = () => {
                         </Form>
                     </Col>
                     }
-
-
                     <Col className='col-12 pt-5 pb-3'>
                         <Link to='/home'>
                             Back to home
@@ -163,8 +151,6 @@ export const AddProduct = () => {
                     </Col>
                 </Row>
             </Container>
-
-
         </Helmet>
     )
 }

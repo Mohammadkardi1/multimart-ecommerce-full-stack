@@ -37,14 +37,10 @@
     border-radius: 50px;
     cursor: pointer;
 }
-
-
 .admin__menu {
     width: 100%;
     background: var(--card-bg-02);
 }
-
-
 .admin__navigation {
     text-align: center;
 }

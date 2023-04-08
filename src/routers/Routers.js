@@ -29,9 +29,6 @@ export const Routers = () => {
                     <Checkout/> 
                 </ProductedRoute>
             } />
-
-
-
             <Route path='dashboard' element={<DashboardRoute/>}>
                 <Route index element={<Dashboard/>}/>
                 <Route  path='main' element={<Dashboard/>} />
@@ -40,9 +37,6 @@ export const Routers = () => {
                 <Route path='users' element={<Users/>}/>
                 {/* <Route path='dashboard/orders' element={<Orders/>}/> */}
             </Route>
-
-
-
             <Route path='login' element={<Login/>}/>
             <Route path='signup' element={<Signup/>}/>
         </Routes>

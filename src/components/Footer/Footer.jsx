@@ -62,7 +62,6 @@ export const Footer = () => {
                             </ListGroup>
                         </div>
                     </div>
-
                     <div className="col-md-6 col-lg-4">
                         <div className="footer__quick-links">
                             <h4 className='quick__links-title'>Contact</h4>
@@ -82,18 +81,11 @@ export const Footer = () => {
                             </ListGroup>
                         </div>
                     </div>
-
-
                     <div className="col-lg-12 mb-4">
                         <div className="footer__copyright">
                             Copyright {year} developed by Mohammad Kardi. All rights reserved.
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </footer>

@@ -1,7 +1,6 @@
 .billing__form .form__group input {
     border: 1px solid black
 }
-
 .checkout__cart {
     padding: 20px;
     background: var(--primary-color);
@@ -15,12 +14,10 @@
 }
 .checkout__cart h6 {
     margin-bottom: 20px;
-
 }
 .checkout__cart h4 {
     border-top: 1px solid rgba(221, 221, 221, 0.253);
     padding-top: 20px;
-
 }
 .checkout__cart button {
     font-weight: 600;

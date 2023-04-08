@@ -56,8 +56,6 @@ export const Checkout = () => {
                                         free shipping
                                     </span>
                                     <span>$0</span>
-                                    
-                                    {/* <span>${totalAmount}</span> */}
                                 </h6>
                                 <h4>Total Cost: <span>${totalAmount}</span></h4>
                                 <button className="shop__btn auth__btn w-100">

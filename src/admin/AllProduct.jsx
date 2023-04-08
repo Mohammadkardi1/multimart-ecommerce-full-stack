@@ -12,22 +12,14 @@ import '../Styles/all-product.css'
 
 
 export const AllProduct = () => {
-    
 
-    // const [productsData, setProductsData] = useState([])
     const [data, loading ] = useGetFirestoreData("products")
-
-
-
     const deleteHandler = async (item) => {
         console.log(item)
         try {
             await deleteDoc(doc(collection(db, "products"), item.id))
-
             const storageRef = ref(storage, item.imgUrl)
             await deleteObject(storageRef)
-
-
             toast.success("Product successfully deleted")
         } catch(error) {
             toast.error('Error deleting product')
@@ -87,7 +79,6 @@ export const AllProduct = () => {
                             }
                     </Col>
                     }
-
                     <Col className='col-12 pt-5 pb-3'>
                         <Link to='/home'>
                             Back to home

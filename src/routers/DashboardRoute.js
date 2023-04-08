@@ -7,7 +7,6 @@ const DashboardRoute = () => {
 
     const {currentUser} = useAuth()
 
-
     return currentUser ? <Outlet/> : <Navigate to='/login'  state={{path: '/dashboard'}}/> 
 }
 

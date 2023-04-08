@@ -19,10 +19,6 @@ const admin__nav = [
         display:'Add Product',
         path: "/dashboard/add-product"
     },
-    // {
-    //     display:'Orders',
-    //     path: "/dashboard/orders"
-    // },
     {
         display:'Users',
         path: "/dashboard/users"
@@ -41,28 +37,19 @@ export const AdminNav = () => {
                 <div className="admin__nav-top">
                     <Container>
                         <div className="admin__nav-wrapper-top g-0">
-
                             <div className="logo ">
                                 <Link to='/home'>
                                     <h2>Multimart</h2>
                                 </Link>
                             </div>
-
                             <div className='admin__nav-top-right '>
                                 <img src={currentUser ?  currentUser.photoURL :userIcon  } 
                                     alt="" />
                             </div>
-
-                            {/* <div className="search__box  " 
-                                ref={searchRef}>
-                                <input type="text" placeholder='Search...' />
-                                <span><i class="ri-search-line"></i></span>
-                            </div> */}
                         </div>
                     </Container>
                 </div>
             </header>
-
             <section className="admin__menu p-4">
                 <Container>
                         <div className="admin__navigation">

@@ -12,10 +12,8 @@ import '../Styles/all-product.css'
 
 
 export const Users = () => {
-    
 
     const [data, loading ] = useGetFirestoreData('users')
-
 
     return (
         <Helmet title={'Users'}>

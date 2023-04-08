@@ -24,11 +24,8 @@ export const Home =  () => {
     const [mobileProducts, setMobileProducts] = useState([])
     const [wirelessProducts, setWirelessProducts] = useState([])
     const [popularProducts, setPopularProducts] = useState([])
-
     const {currentUser} = useAuth()
     const year = new Date().getFullYear()
-
-
     const [products, loading ] = useGetFirestoreData("products")
     const location = useLocation()
     
@@ -36,7 +33,6 @@ export const Home =  () => {
     useEffect(() => {
         const filterTrendingProducts = products.filter(item => item.category === 'chair')
         setTrendingProducts(filterTrendingProducts)
-
 
         const filterBestSalesProducts = products.filter(item => item.category === 'sofa')
         setBestSalesProducts(filterBestSalesProducts)
@@ -84,14 +80,12 @@ export const Home =  () => {
                                         <div className="d-flex align-items-center  flex-row gap-3">
                                             {/* <span onClick={signoutHandler}>Logout</span> 
                                             <Link to='/dashboard'>Dashboard</Link> */}
-
                                             
                                             <motion.button whileHover={{scale:1.2}} 
                                                 className="shop__btn  p-2 "
                                                 onClick={signoutHandler}>
                                                     Logout
                                             </motion.button>
-
                                             <motion.button 
                                                 whileHover={{scale:1.2}} 
                                                 className="shop__btn p-2 ">
@@ -99,20 +93,8 @@ export const Home =  () => {
                                                     Dashboard
                                                 </Link>
                                             </motion.button>
-
-
                                         </div>
                                         : <div className='d-flex align-items-center  flex-row gap-3'>
-                                                {/* <Link to='/signup' state={{path: location.pathname}}>
-                                                    Signup
-                                                </Link> */}
-                                                {/* <Link to='/login' state={{path: location.pathname}}>
-                                                    Login
-                                                </Link> */}
-                                                {/* <Link to='/dashboard'>
-                                                    Dashboard
-                                                </Link> */}
-
                                                 <motion.button 
                                                     whileHover={{scale:1.2}} 
                                                     className="shop__btn  p-2 ">
@@ -120,8 +102,6 @@ export const Home =  () => {
                                                         Signup
                                                     </Link>
                                                 </motion.button>
-
-
                                                 <motion.button 
                                                     whileHover={{scale:1.2}} 
                                                     className="shop__btn p-2 ">
@@ -129,7 +109,6 @@ export const Home =  () => {
                                                         Login
                                                     </Link>
                                                 </motion.button>
-
                                                 <motion.button 
                                                     whileHover={{scale:1.2}} 
                                                     className="shop__btn p-2 ">
@@ -137,7 +116,6 @@ export const Home =  () => {
                                                         Dashboard
                                                     </Link>
                                                 </motion.button>
-
                                         </div>
                                     }
                             </div>
@@ -150,9 +128,7 @@ export const Home =  () => {
                     </div>
                 </div>
             </section>
-
             <Services/>
-
             {
                 trendingProducts.length !== 0 ? 
                 <section className='trending_products pt-5'>
@@ -168,7 +144,6 @@ export const Home =  () => {
                     </div>
                 </section> : null
             }
-
             {
                 bestSalesProducts.length !== 0 ?
                 <section className="best__sales pt-5">
@@ -184,7 +159,6 @@ export const Home =  () => {
                     </div>
                 </section> : null 
             }
-
             <section className="timer__count p-4 mt-5">
                 <div className="container">
                     <div className="row">
@@ -206,9 +180,6 @@ export const Home =  () => {
                     </div>
                 </div>
             </section>
-
-
-
             {
                 mobileProducts.length !==  0 ? 
                 <section className="new__arivals pt-5">
@@ -224,7 +195,6 @@ export const Home =  () => {
                     </div>
                 </section> : null 
             }
-
             {
                 wirelessProducts.length !==  0 ? 
                 <section className="new__arivals pt-5">
@@ -240,8 +210,6 @@ export const Home =  () => {
                     </div>
                 </section> : null 
             }
-
-
             {
                 popularProducts.length !== 0 ? 
                 <section className="popular__category pt-5">
@@ -257,7 +225,6 @@ export const Home =  () => {
                     </div>
                 </section> : null 
             }
-
         </Helmet>
     )
 }

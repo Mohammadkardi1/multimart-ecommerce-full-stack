@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from '../components/Helmet/Helmet'
-import CommonSection from '../components/UI/CommonSection'
 import { Form, FormGroup } from 'reactstrap'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import '../Styles/login.css'
@@ -15,8 +14,6 @@ import { FirebaseError } from 'firebase/app'
 
 export const Login = () => {
 
-    // const [email,setEmail ] =useState('')
-    // const [password,setPassword ] =useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
@@ -24,16 +21,11 @@ export const Login = () => {
     const redirectPath = location.state?.path || '/home'
     const [logInError, setLogInError] = useState("")
 
-    // console.log("location.state?.path",  location.state?.path)
-    // console.log("redirectPath", redirectPath)
-    // console.log("location.pathname",  typeof location.pathname)
-
     useEffect(()=> {
         window.scrollTo(0,0)
     })
 
     const signIn = async (data) => {
-        // e.preventDefault()
         setLoading(true)
         try {
             const userCredential = await signInWithEmailAndPassword(auth, data.email,data.password )
@@ -76,8 +68,6 @@ export const Login = () => {
                                             name= "email"
                                             id="email"
                                             placeholder='Enter your email'
-                                            // value={email}
-                                            // onChange={e => setEmail(e.target.value)}
                                             {...register('email', {
                                                 required: "Please Enter Email",
                                                 pattern: {
@@ -95,9 +85,6 @@ export const Login = () => {
                                             id="password"
                                             name="password"
                                             placeholder='Enter your password'
-                                            // value={password}
-                                            // onChange={e => setPassword(e.target.value)}
-
                                             {...register("password", {
                                                 required: "Please Enter Password",
                                                 minLength: {
@@ -114,13 +101,11 @@ export const Login = () => {
                                         type='submit'>
                                         Login
                                     </button>
-
                                     <div className='text-center'>
                                         <p className={`error-message ${logInError ? "d-block" : "d-none"}`}>
                                             {logInError}
                                         </p>
                                     </div>
-
                                     <p>
                                         Don't have an account? <Link to='/signup'>Create an account</Link> 
                                     </p>

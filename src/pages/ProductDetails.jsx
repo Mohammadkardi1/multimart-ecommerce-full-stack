@@ -17,18 +17,13 @@ export const ProductDetails = () => {
 
     const {id } = useParams()
     const dispatch = useDispatch()
-
-
     const [products, loading ] = useGetFirestoreData("products")
-
-
     const docRef = doc(db, 'products', id )
     const [product, setProduct] = useState({})
 
     useEffect(()=> {
         const getProduct = async() => {
             const docSnap = await getDoc(docRef)
-
             if (docSnap.exists()) {
                 setProduct(docSnap.data())
             } else {
@@ -37,14 +32,12 @@ export const ProductDetails = () => {
         } 
         getProduct()
         console.log("q111111111111")
-
     }, [])
 
     console.log("222222222222222")
 
 
     const relatedProducts = products.filter(item => item.category === product.category )
-
     const [tab,setTab] = useState('desc')
     const [rating, setRating] = useState(null)
     const reviewUser = useRef('')
@@ -52,7 +45,6 @@ export const ProductDetails = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-
     }, [id])
 
     const addToCart = () => {
@@ -68,11 +60,8 @@ export const ProductDetails = () => {
 
     const submithandler = (e) => {
         e.preventDefault()
-
         const reviewUserName = reviewUser.current.value
         const reviewUserMsg = reviewMsg.current.value
-        
-        
         const reviewObj = {
             userName : reviewUserName,
             text: reviewUserMsg,
@@ -97,10 +86,6 @@ export const ProductDetails = () => {
             text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit cum odio placeat tenetur ea ipsa necessitatibus, recusandae cumque deleniti ratione."
         }
     ]
-
-
-
-
 
     return (
         <Helmet title ={product.productName}>
@@ -131,7 +116,6 @@ export const ProductDetails = () => {
                                     <span>Category: {product.category}</span>
                                 </div>
                                 <p className='mt-3'>{product.shortDesc}</p>
-
                                 <motion.button whileHover={{scale:1.1}}
                                     className="shop__btn"
                                     onClick={addToCart}>
@@ -142,7 +126,6 @@ export const ProductDetails = () => {
                     </div>
                 </div>
             </section>
-
             <section>
                 <div className="container">
                     <div className="row">
@@ -209,7 +192,6 @@ export const ProductDetails = () => {
                                                         5<i class="ri-star-fill"></i>
                                                     </motion.span>
                                                 </div>
-
                                                 <div className="form__group">
                                                     <textarea 
                                                         rows={4} 
@@ -218,23 +200,17 @@ export const ProductDetails = () => {
                                                         ref={reviewMsg}
                                                         required/>
                                                 </div>
-
                                                 <motion.button whileHover={{scale:1.2}}
                                                     className="shop__btn"
                                                     type='submit'>
                                                     Submit
                                                 </motion.button>
-
-
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
                             }
-
                         </div>
-
                         <div className="col-lg-12 mt-5  text-center">
                             <h2 className="related__title">
                                 You might also like
@@ -244,7 +220,6 @@ export const ProductDetails = () => {
                     </div>
                 </div>
             </section>
-
         </Helmet>
     )
 }

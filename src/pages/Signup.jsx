@@ -17,28 +17,15 @@ import {  useForm } from 'react-hook-form'
 
 export const Signup = () => {
 
-
-
-
-    // const [username,setUsername ] =useState('')
-    // const [email,setEmail ] =useState('')
-    // const [password,setPassword ] =useState('')
-    // const [file,setFile ] =useState(null)
-
-
-
-
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
     const redirectPath = location.state?.path || '/home'
     const {register, handleSubmit, formState: {errors} } = useForm()
 
-
     useEffect(()=> {
         window.scrollTo(0,0)
     })
-
 
     const validateImageType = (value) => {
         if (!value[0]) {
@@ -54,16 +41,9 @@ export const Signup = () => {
         // Valid file type
         return true;
     }
-
-
-
-
-
     const Signup = async (data) => {
-        // e.preventDefault()
         console.log(data)
         setLoading(true)
-
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password)
             const user = userCredential.user
@@ -90,19 +70,13 @@ export const Signup = () => {
             toast.success("Acount has been created")
             setLoading(false)
             navigate(redirectPath, {replace:true})
-
-            
         } catch(error) {
             setLoading(false)
             const errorCode = error.code
             const errorMessage = error.message
             toast.error('something went wrong')
         }
-
     }
-
-
-
     return (
         <Helmet title={"Signup"}>
             <section>
@@ -121,8 +95,6 @@ export const Signup = () => {
                                             id="username"
                                             name="username"
                                             placeholder='Username'
-                                            // value={username}
-                                            // onChange={e => setUsername(e.target.value)}
                                             {...register("username", {
                                                 required: "Please enter username",
                                                 minLength: {
@@ -140,8 +112,6 @@ export const Signup = () => {
                                             id = "email"
                                             name="email"
                                             placeholder='Enter your email'
-                                            // value={email}
-                                            // onChange={e => setEmail(e.target.value)}
                                             {...register('email', {
                                                 required: "Please Enter Email",
                                                 pattern: {
@@ -159,8 +129,6 @@ export const Signup = () => {
                                             id="password"
                                             name="password"
                                             placeholder='Enter your password'
-                                            // value={password}
-                                            // onChange={e => setPassword(e.target.value)}
                                             {...register("password", {
                                                 required: "Please Enter Password",
                                                 minLength: {
@@ -182,7 +150,6 @@ export const Signup = () => {
                                             id="file"
                                             name='file'
                                             accept='image/*'
-                                            // onChange={e => setFile(e.target.files[0])}
                                             {...register("file", {
                                                 required: "Please enter the iamge of the price",
                                                 validate: validateImageType
@@ -204,7 +171,6 @@ export const Signup = () => {
                                 </Form>
                             </div>
                         }
-
                     </div>
                 </div>
             </section>

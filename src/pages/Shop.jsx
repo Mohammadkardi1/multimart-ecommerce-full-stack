@@ -9,21 +9,16 @@ import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
 
 export const Shop = () => {
 
-
     const [productsData, setProductsData] = useState(null)
     const [products, loading ] = useGetFirestoreData("products")
-
-
     const filterHandler = (e) => {
         const result = products.filter((item) => item.category ===  e.target.value)
         setProductsData(result)
     }
-
     const sorthandler = (e) => {
         if (e.target.value === 'ascending') {
             const result = [...products].sort((a,b) => a.price - b.price)
             setProductsData(result)
-
         } else if (e.target.value === 'descending') {
             const result = [...products].sort((a,b) => b.price - a.price)
             setProductsData(result)
@@ -31,7 +26,6 @@ export const Shop = () => {
             setProductsData([])
         }
     }
-
     const searchHandler = (e) => {
         if (e.target.value === "" ) {
             setProductsData([])
@@ -40,15 +34,12 @@ export const Shop = () => {
             const result = products.filter(item => item.productName.toLowerCase().includes(searchedTerm.toLowerCase()))
             setProductsData(result)
         }
-
     }
 
 
     return (
         <Helmet title={"Shop"}>
             <CommonSection title={'products'}/>
-
-
             <section className="pt-5">
                 <div className="container">
                     <div className="row">
@@ -84,14 +75,11 @@ export const Shop = () => {
                                     <i class="ri-search-line"></i>
                                 </span>
                             </div>
-
                         </div>
-
                     </div>
                     
                 </div>
             </section>
-
             {
                 loading ? null :
                 <section className='pt-5'>
@@ -105,9 +93,6 @@ export const Shop = () => {
                     </div>
                 </section>
             }
-
-
-
         </Helmet>
     )
 }

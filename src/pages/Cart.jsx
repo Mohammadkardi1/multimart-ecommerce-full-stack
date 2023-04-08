@@ -14,11 +14,7 @@ export const Cart = () => {
     const cartItems = useSelector(state => state.cart.cartItems)
     const totalAmount = useSelector(state => state.cart.totalAmount)
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
-
-
     const dispatch = useDispatch()
-
-
     const deletehandler = (item) => {
         dispatch(cartActions.deleteItem(item.id))
         console.log(item.id)
@@ -57,18 +53,14 @@ export const Cart = () => {
                                                             <motion.i whileTap={{scale:1.5}}
                                                             class="ri-delete-bin-line">
                                                             </motion.i>
-
                                                         </div>
                                                     </td>
                                                 </tr>
                                             ))
                                         }
-
                                     </tbody>
                             </table>
                             }
-
-
                         </div>
                         <div className="col-lg-3 pt-4 pt-lg-0">
                             <div>

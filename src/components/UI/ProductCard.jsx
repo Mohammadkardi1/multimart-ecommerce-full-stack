@@ -13,9 +13,6 @@ const ProductCard = ({item}) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
-
-
     const addToCart = () => {
         dispatch(cartActions.addItem({
             id: item.id,

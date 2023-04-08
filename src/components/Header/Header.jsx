@@ -11,8 +11,6 @@ import { signOut } from 'firebase/auth'
 import {toast} from 'react-toastify'
 
 
-
-
 const nav__items = [
     {
         path: "home",
@@ -28,38 +26,25 @@ const nav__items = [
     }
 ]
 
-
-
-
 export const Header = () => {
 
     const menuRef = useRef(null)
     const navigate = useNavigate()
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
     const profileActionRef = useRef(null)
-
-
     const location = useLocation()
 
-    // const user = auth.currentUser
-
     const {currentUser} = useAuth()
-
-    
-
     const navigateToCart = () => {
         navigate('/cart')
     }
-
     const menuToggle = () => {
         menuRef.current.classList.toggle('active__menu')
     }
-
     const toggleProfileActions = () =>{
         profileActionRef.current.classList.toggle('show__profileActions')
         console.log('asasasas')
     }
-
     const signoutHandler = () => {
         signOut(auth).then(() => {
             toast.success('You is signed out')
@@ -67,15 +52,6 @@ export const Header = () => {
             toast.error(error.message)
         })
     }
-
-    // const clickhandler = () => {
-    //     console.log('asasasasa4444444')
-    //     const state = { path: '/dashboard' };
-    //     // return <Navigate to='/dashboard' state={{  path :'/dashboard'}}/>
-    //     return <Navigate to={{ pathname: '/new-url', state: state }} />
-        
-        
-    // }
 
     return (
         <div className="header py-3">
@@ -87,14 +63,11 @@ export const Header = () => {
                                 <img src={logo} alt="logo" />
                                 <div>
                                     <h1>Multimart</h1>
-                                    {/* <p>since 1995</p> */}
                                 </div>
                             </div>
                         </Link>
                         <div className="navigation" ref={menuRef}>
-
                             <ul className="menu p-3 p-md-0" 
-                            // onClick="event.stopPropagation()"
                             >
                                 <li className="w-100 text-end d-block d-md-none" >
                                     <i 
@@ -106,28 +79,21 @@ export const Header = () => {
                                 {
                                     nav__items.map((item, index) => (
                                         <li key={index} className="w-100 text-start py-2 nav__item">
-
                                             <NavLink to={item.path} 
                                                 className={(navClass) => navClass.isActive ? "nav__active": ""}>
                                                 {item.display}
                                             </NavLink>
                                         </li>
-
                                     ))
                                 }
                             </ul>
                         </div>
 
                         <div className="nav__icons">
-                            {/* <span className="fav__icon">
-                                <i class="ri-heart-line"></i>
-                                <span className='badge'>1</span>
-                            </span> */}
                             <span className="cart__icon" onClick={navigateToCart}>
                                 <i class="ri-shopping-bag-line"></i>
                                 <span className='badge'>{totalQuantity}</span>
                             </span>
-
                             <div className='profile'>
                                 <motion.img 
                                     whileHover={{scale: 1.2}} 
@@ -158,20 +124,15 @@ export const Header = () => {
                                     }
                                 </div>
                             </div>
-
-
-
                             <div className="mobile__menu">
                                 <span onClick={menuToggle}>
                                     <i class="ri-menu-line"></i>
                                 </span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     )
 }
