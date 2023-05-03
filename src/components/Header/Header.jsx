@@ -54,85 +54,90 @@ export const Header = () => {
     }
 
     return (
-        <div className="header py-3">
-            <div className='container'>
-                <div className="row">
-                    <div className="nav__wrapper">
-                        <Link to="home">
-                            <div className="logo">
-                                <img src={logo} alt="logo" />
-                                <div>
-                                    <h1>Multimart</h1>
+        <>
+            <div className="text-white text-center py-2 px-4" style={{background:'#000', fontSize:".8rem"}}>
+                Please use a VPN to explore the features of this website since I have used Firebase as a cloud-based database.
+            </div>
+            <div className="header py-3">
+                <div className='container'>
+                    <div className="row">
+                        <div className="nav__wrapper">
+                            <Link to="home">
+                                <div className="logo">
+                                    <img src={logo} alt="logo" />
+                                    <div className='d-none d-sm-block'>
+                                        <h1>Multimart</h1>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                        <div className="navigation" ref={menuRef}>
-                            <ul className="menu p-3 p-md-0" 
-                            >
-                                <li className="w-100 text-end d-block d-md-none" >
-                                    <i 
-                                        className="ri-close-fill display-6" 
-                                        onClick={menuToggle} 
-                                        role="button">
-                                    </i>
-                                </li>
-                                {
-                                    nav__items.map((item, index) => (
-                                        <li key={index} className="w-100 text-start py-2 nav__item">
-                                            <NavLink to={item.path} 
-                                                className={(navClass) => navClass.isActive ? "nav__active": ""}>
-                                                {item.display}
-                                            </NavLink>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </div>
-
-                        <div className="nav__icons">
-                            <span className="cart__icon" onClick={navigateToCart}>
-                                <i class="ri-shopping-bag-line"></i>
-                                <span className='badge'>{totalQuantity}</span>
-                            </span>
-                            <div className='profile'>
-                                <motion.img 
-                                    whileHover={{scale: 1.2}} 
-                                    src={currentUser? currentUser.photoURL : userIcon} 
-                                    alt=""
-                                    onClick={toggleProfileActions} />
-                                <div 
-                                    className='profile__actions' 
-                                    ref={profileActionRef}
-                                    onClick={toggleProfileActions}>
+                            </Link>
+                            <div className="navigation" ref={menuRef}>
+                                <ul className="menu p-3 p-md-0" 
+                                >
+                                    <li className="w-100 text-end d-block d-md-none" >
+                                        <i 
+                                            className="ri-close-fill display-6" 
+                                            onClick={menuToggle} 
+                                            role="button">
+                                        </i>
+                                    </li>
                                     {
-                                        currentUser ? 
-                                        <div className="d-flex align-items-center justify-content-center flex-column">
-                                            <span onClick={signoutHandler}>Logout</span> 
-                                            <Link to='dashboard'>Dashboard</Link>
-                                        </div>
-                                        : <div className='d-flex align-items-center justify-content-center flex-column'>
-                                                <Link to='/signup' state={{path: location.pathname}}>
-                                                    Signup
-                                                </Link>
-                                                <Link to='/login' state={{path: location.pathname}}>
-                                                    Login
-                                                </Link>
-                                                <Link to='/dashboard'>
-                                                    Dashboard
-                                                </Link>
-                                        </div>
+                                        nav__items.map((item, index) => (
+                                            <li key={index} className="w-100 text-start py-2 nav__item">
+                                                <NavLink to={item.path} 
+                                                    className={(navClass) => navClass.isActive ? "nav__active": ""}>
+                                                    {item.display}
+                                                </NavLink>
+                                            </li>
+                                        ))
                                     }
-                                </div>
+                                </ul>
                             </div>
-                            <div className="mobile__menu">
-                                <span onClick={menuToggle}>
-                                    <i class="ri-menu-line"></i>
+
+                            <div className="nav__icons">
+                                <span className="cart__icon" onClick={navigateToCart}>
+                                    <i class="ri-shopping-bag-line"></i>
+                                    <span className='badge'>{totalQuantity}</span>
                                 </span>
+                                <div className='profile'>
+                                    <motion.img 
+                                        whileHover={{scale: 1.2}} 
+                                        src={currentUser? currentUser.photoURL : userIcon} 
+                                        alt=""
+                                        onClick={toggleProfileActions} />
+                                    <div 
+                                        className='profile__actions' 
+                                        ref={profileActionRef}
+                                        onClick={toggleProfileActions}>
+                                        {
+                                            currentUser ? 
+                                            <div className="d-flex align-items-center justify-content-center flex-column">
+                                                <span onClick={signoutHandler}>Logout</span> 
+                                                <Link to='dashboard'>Dashboard</Link>
+                                            </div>
+                                            : <div className='d-flex align-items-center justify-content-center flex-column'>
+                                                    <Link to='/signup' state={{path: location.pathname}}>
+                                                        Signup
+                                                    </Link>
+                                                    <Link to='/login' state={{path: location.pathname}}>
+                                                        Login
+                                                    </Link>
+                                                    <Link to='/dashboard'>
+                                                        Dashboard
+                                                    </Link>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="mobile__menu">
+                                    <span onClick={menuToggle}>
+                                        <i class="ri-menu-line"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
