@@ -1,7 +1,7 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef} from 'react'
 import './header.css'
 import logo from '../../assets/images/eco-logo.png'
-import { Link, useLocation, NavLink, useNavigate, Navigate } from 'react-router-dom'
+import { Link, useLocation, NavLink, useNavigate } from 'react-router-dom'
 import userIcon from '../../assets/images/user-icon.png'
 import {motion} from 'framer-motion'
 import { useSelector } from 'react-redux'
@@ -43,7 +43,6 @@ export const Header = () => {
     }
     const toggleProfileActions = () =>{
         profileActionRef.current.classList.toggle('show__profileActions')
-        console.log('asasasas')
     }
     const signoutHandler = () => {
         signOut(auth).then(() => {

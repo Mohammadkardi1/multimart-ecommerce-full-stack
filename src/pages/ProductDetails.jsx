@@ -11,13 +11,14 @@ import {toast} from 'react-toastify'
 import { db } from '../firebaseConfig'
 import { doc,  getDoc } from 'firebase/firestore'
 // import products from '../assets/data/products'
-import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
+// import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
+import products from './../assets/data/products';
 
 export const ProductDetails = () => {
 
     const {id } = useParams()
     const dispatch = useDispatch()
-    const [products, loading ] = useGetFirestoreData("products")
+    
     const docRef = doc(db, 'products', id )
     const [product, setProduct] = useState({})
 
@@ -31,10 +32,8 @@ export const ProductDetails = () => {
             }
         } 
         getProduct()
-        console.log("q111111111111")
     }, [])
 
-    console.log("222222222222222")
 
 
     const relatedProducts = products.filter(item => item.category === product.category )
@@ -60,13 +59,13 @@ export const ProductDetails = () => {
 
     const submithandler = (e) => {
         e.preventDefault()
-        const reviewUserName = reviewUser.current.value
-        const reviewUserMsg = reviewMsg.current.value
-        const reviewObj = {
-            userName : reviewUserName,
-            text: reviewUserMsg,
-            rating,
-        }
+        // const reviewUserName = reviewUser.current.value
+        // const reviewUserMsg = reviewMsg.current.value
+        // const reviewObj = {
+        //     userName : reviewUserName,
+        //     text: reviewUserMsg,
+        //     rating,
+        // }
 
         toast.success('Review is submitted successfully')
         e.current.reset()

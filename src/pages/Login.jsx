@@ -3,8 +3,8 @@ import { Helmet } from '../components/Helmet/Helmet'
 import { Form, FormGroup } from 'reactstrap'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import '../Styles/login.css'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import {auth} from '../firebaseConfig'
+// import { signInWithEmailAndPassword } from 'firebase/auth'
+// import {auth} from '../firebaseConfig'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { FirebaseError } from 'firebase/app'
@@ -28,9 +28,8 @@ export const Login = () => {
     const signIn = async (data) => {
         setLoading(true)
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, data.email,data.password )
-            const user = userCredential.user
-            console.log(user)
+            // const userCredential = await signInWithEmailAndPassword(auth, data.email,data.password )
+            // const user = userCredential.user
             setLoading(false)
             toast.success('successfully logged in')
             navigate(redirectPath, {replace :true})

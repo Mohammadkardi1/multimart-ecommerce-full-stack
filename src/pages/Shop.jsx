@@ -4,7 +4,7 @@ import CommonSection from '../components/UI/CommonSection'
 // import products from '../assets/data/products'
 import ProductsList from '../components/UI/ProductsList'
 import '../Styles/shop.css'
-import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
+// import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
 import products from './../assets/data/products'
 
 

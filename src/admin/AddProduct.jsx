@@ -29,7 +29,6 @@ export const AddProduct = () => {
             uploadTask.on('next',
             (snapshot) => {
               // Handle progress, such as updating a progress bar
-                console.log(`Upload is ${snapshot.bytesTransferred} bytes`);
             },
                 () => {
                     toast.error('Image upload failed')

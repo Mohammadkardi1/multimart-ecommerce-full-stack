@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from '../components/Helmet/Helmet'
-import CommonSection from '../components/UI/CommonSection'
 import { Form, FormGroup } from 'reactstrap'
 import { Link, useLocation} from 'react-router-dom'
 import '../Styles/login.css'
@@ -42,7 +41,6 @@ export const Signup = () => {
         return true;
     }
     const Signup = async (data) => {
-        console.log(data)
         setLoading(true)
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -72,8 +70,8 @@ export const Signup = () => {
             navigate(redirectPath, {replace:true})
         } catch(error) {
             setLoading(false)
-            const errorCode = error.code
-            const errorMessage = error.message
+            // const errorCode = error.code
+            // const errorMessage = error.message
             toast.error('something went wrong')
         }
     }

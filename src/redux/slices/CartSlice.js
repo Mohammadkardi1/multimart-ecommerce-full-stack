@@ -13,7 +13,6 @@ const CartSlice = createSlice({
         addItem: (state, action) => {
             const newItem = action.payload; 
             const existingItem = state.cartItems.find(item => item.id === newItem.id)
-            // console.log(newItem)
             if (!existingItem) {
                 state.cartItems.push({
                     id: newItem.id,
@@ -36,8 +35,6 @@ const CartSlice = createSlice({
             const id = action.payload
             // const cartItems = state.cartItems
             const indexOfProduct = state.cartItems.findIndex(item => item.id === id)
-            console.log( "deletedItem.price")
-            console.log(Number(state.cartItems[indexOfProduct].price))
             state.totalAmount = state.totalAmount - (Number(state.cartItems[indexOfProduct].price ) / state.cartItems[indexOfProduct].quantity)
             state.totalQuantity --
             if (state.cartItems[indexOfProduct].quantity === 1 ) {

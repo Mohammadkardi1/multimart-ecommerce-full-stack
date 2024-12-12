@@ -17,7 +17,6 @@ export const Cart = () => {
     const dispatch = useDispatch()
     const deletehandler = (item) => {
         dispatch(cartActions.deleteItem(item.id))
-        console.log(item.id)
     }
 
     return (

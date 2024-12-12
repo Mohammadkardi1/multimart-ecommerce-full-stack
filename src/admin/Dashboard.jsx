@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { Helmet } from '../components/Helmet/Helmet'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 import '../Styles/dashboard.css'
 import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
 import { Link } from 'react-router-dom'
