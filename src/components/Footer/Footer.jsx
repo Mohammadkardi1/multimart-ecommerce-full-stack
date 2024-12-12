@@ -67,15 +67,15 @@ export const Footer = () => {
                             <h4 className='quick__links-title'>Contact</h4>
                             <ListGroup className='mb-3 footer__contact'>
                                 <ListGroupItem className='ps-0 border-0  d-flex align-items-center gap-2'>
-                                    <span><i class="ri-map-pin-line"></i></span>
+                                    <span><i className="ri-map-pin-line"></i></span>
                                     <p>7 April St, Latakia, Syria</p>
                                 </ListGroupItem>
                                 <ListGroupItem  className='ps-0 border-0  d-flex align-items-center gap-2'>
-                                    <span><i class="ri-phone-line"></i></span>
+                                    <span><i className="ri-phone-line"></i></span>
                                     <p>+963 945 238 961</p>
                                 </ListGroupItem>
                                 <ListGroupItem  className='ps-0 border-0  d-flex align-items-center gap-2'>
-                                    <span><i class="ri-mail-line"></i></span>
+                                    <span><i className="ri-mail-line"></i></span>
                                     <p>mohammadkardi1@gmail.com</p>
                                 </ListGroupItem>
                             </ListGroup>

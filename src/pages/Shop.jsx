@@ -72,7 +72,7 @@ export const Shop = () => {
                                     placeholder='Search...'
                                     onChange={searchHandler}/>
                                 <span>
-                                    <i class="ri-search-line"></i>
+                                    <i className="ri-search-line"></i>
                                 </span>
                             </div>
                         </div>

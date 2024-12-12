@@ -101,11 +101,11 @@ export const ProductDetails = () => {
                                 <h2>{product.productName}</h2>
                                 <div className="product__rating d-flex align-items-center gap-5 mb-3">
                                     <div>
-                                        <span><i class="ri-star-fill"></i></span>
-                                        <span><i class="ri-star-fill"></i></span>
-                                        <span><i class="ri-star-fill"></i></span>
-                                        <span><i class="ri-star-fill"></i></span>
-                                        <span><i class="ri-star-half-line"></i></span>
+                                        <span><i className="ri-star-fill"></i></span>
+                                        <span><i className="ri-star-fill"></i></span>
+                                        <span><i className="ri-star-fill"></i></span>
+                                        <span><i className="ri-star-fill"></i></span>
+                                        <span><i className="ri-star-half-line"></i></span>
                                     </div>
                                     <p>
                                         (<span>4.5 </span> ratings)
@@ -173,23 +173,23 @@ export const ProductDetails = () => {
                                                 <div className="form__group d-flex align-items-center gap-5 rating__group">
                                                     <motion.span whileHover={{scale:1.2}}
                                                         onClick={() => setRating(1)}>
-                                                        1<i class="ri-star-fill"></i>
+                                                        1<i className="ri-star-fill"></i>
                                                     </motion.span>
                                                     <motion.span whileHover={{scale:1.2}}
                                                         onClick={() => setRating(2)}>
-                                                        2<i class="ri-star-fill"></i>
+                                                        2<i className="ri-star-fill"></i>
                                                     </motion.span>
                                                     <motion.span whileHover={{scale:1.2}}
                                                         onClick={() => setRating(3)}> 
-                                                        3<i class="ri-star-fill"></i>
+                                                        3<i className="ri-star-fill"></i>
                                                     </motion.span>
                                                     <motion.span whileHover={{scale:1.2}}
                                                         onClick={() => setRating(4)}>
-                                                        4<i class="ri-star-fill"></i>
+                                                        4<i className="ri-star-fill"></i>
                                                     </motion.span>
                                                     <motion.span whileHover={{scale:1.2}}
                                                         onClick={() => setRating(5)}>
-                                                        5<i class="ri-star-fill"></i>
+                                                        5<i className="ri-star-fill"></i>
                                                     </motion.span>
                                                 </div>
                                                 <div className="form__group">

@@ -57,7 +57,7 @@ const Clock = () => {
         <div className='clock__wrapper d-flex align-items-center gap-3'>
             {
                 clock.map((item, index) => (
-                    <div className="clock__data d-flex align-items-center gap-3">
+                    <div key={index} className="clock__data d-flex align-items-center gap-3">
                         <div className='text-center'>
                             <h1 className='text-white fs-3 mb-3'>{item.period}</h1>
                             <h5 className='text-white fs-6'>{item.text}</h5>

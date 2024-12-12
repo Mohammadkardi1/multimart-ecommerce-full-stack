@@ -14,6 +14,8 @@ import useAuth from '../custom-hooks/UseAuth'
 import { signOut } from 'firebase/auth'
 import {toast} from 'react-toastify'
 import {auth} from '../firebaseConfig'
+import products from './../assets/data/products';
+
 
 
 
@@ -26,7 +28,8 @@ export const Home =  () => {
     const [popularProducts, setPopularProducts] = useState([])
     const {currentUser} = useAuth()
     const year = new Date().getFullYear()
-    const [products, loading ] = useGetFirestoreData("products")
+    // const [products, loading ] = useGetFirestoreData("products")
+
     const location = useLocation()
     
 

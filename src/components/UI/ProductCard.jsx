@@ -44,7 +44,7 @@ const ProductCard = ({item}) => {
                     justify-content-between p-2">
                     <div className="price">${item.price}</div>
                     <span onClick={addToCart} role='button'>
-                        <i class="ri-add-line"></i>
+                        <i className="ri-add-line"></i>
                     </span>
                     
                 </div>

@@ -9,7 +9,7 @@ import {ref, deleteObject} from 'firebase/storage'
 import { Link } from 'react-router-dom'
 import '../Styles/all-product.css'
 
-// update
+
 
 export const AllProduct = () => {
 

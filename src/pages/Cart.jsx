@@ -51,7 +51,7 @@ export const Cart = () => {
                                                     <td>
                                                         <div onClick={() => deletehandler(item)}>
                                                             <motion.i whileTap={{scale:1.5}}
-                                                            class="ri-delete-bin-line">
+                                                            className="ri-delete-bin-line">
                                                             </motion.i>
                                                         </div>
                                                     </td>
