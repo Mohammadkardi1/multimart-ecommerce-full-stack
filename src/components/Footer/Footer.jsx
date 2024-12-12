@@ -68,7 +68,7 @@ export const Footer = () => {
                             <ListGroup className='mb-3 footer__contact'>
                                 <ListGroupItem className='ps-0 border-0  d-flex align-items-center gap-2'>
                                     <span><i className="ri-map-pin-line"></i></span>
-                                    <p>7 April St, Latakia, Syria</p>
+                                    <p>7 April St, Germany</p>
                                 </ListGroupItem>
                                 <ListGroupItem  className='ps-0 border-0  d-flex align-items-center gap-2'>
                                     <span><i className="ri-phone-line"></i></span>
