@@ -9,13 +9,12 @@ import {ref, deleteObject} from 'firebase/storage'
 import { Link } from 'react-router-dom'
 import '../Styles/all-product.css'
 
-
+// update
 
 export const AllProduct = () => {
 
     const [data, loading ] = useGetFirestoreData("products")
     const deleteHandler = async (item) => {
-        console.log(item)
         try {
             await deleteDoc(doc(collection(db, "products"), item.id))
             const storageRef = ref(storage, item.imgUrl)

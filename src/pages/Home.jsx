@@ -46,7 +46,6 @@ export const Home =  () => {
         const filterPopularProducts = products.filter(item => item.category === 'watch')
         setPopularProducts(filterPopularProducts)
 
-        console.log('asassa')
     },[products])
 
 
