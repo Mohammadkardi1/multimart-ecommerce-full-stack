@@ -55,9 +55,6 @@ export const Header = () => {
 
     return (
         <>
-            <div className="text-white text-center py-2 px-4" style={{background:'#000', fontSize:".8rem"}}>
-                Please use a VPN to discover the features of this website since I have used Firebase as a cloud-based database.
-            </div>
             <div className="header py-3">
                 <div className='container'>
                     <div className="row">
