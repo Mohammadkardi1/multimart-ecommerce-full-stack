@@ -5,12 +5,16 @@ import CommonSection from '../components/UI/CommonSection'
 import ProductsList from '../components/UI/ProductsList'
 import '../Styles/shop.css'
 import useGetFirestoreData from '../custom-hooks/useGetFirestoreData'
+import products from './../assets/data/products'
 
 
 export const Shop = () => {
 
     const [productsData, setProductsData] = useState(null)
-    const [products, loading ] = useGetFirestoreData("products")
+
+
+
+
     const filterHandler = (e) => {
         const result = products.filter((item) => item.category ===  e.target.value)
         setProductsData(result)
