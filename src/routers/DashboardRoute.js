@@ -1,13 +1,13 @@
 import React from 'react'
-import useAuth from '../custom-hooks/UseAuth'
 import { Navigate } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const DashboardRoute = () => {
 
-    const {currentUser} = useAuth()
+    const { loggedInUser } = useSelector(state => state.auth)
 
-    return currentUser ? <Outlet/> : <Navigate to='/login'  state={{path: '/dashboard'}}/> 
+    return loggedInUser ? <Outlet/> : <Navigate to='/login'  state={{path: '/dashboard'}}/> 
 }
 
 export default DashboardRoute

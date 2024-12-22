@@ -14,6 +14,8 @@ import { Users } from '../admin/Users'
 import ProductedRoute from './ProtuctedRoute'
 import DashboardRoute from './DashboardRoute'
 import VerifyEmail from './../pages/VerifyEmail';
+import AuthenticationProtect from './AuthenticationProtect'
+import NotFoundPage from './../pages/NotFoundPage';
 
 export const Routers = () => {
     return (
@@ -21,21 +23,18 @@ export const Routers = () => {
             <Route path='/' element={<Navigate to="home"/>}/>
             <Route path='home' element={<Home/>}/>
 
-            <Route path='login' element={<Login/>}/>
-            <Route path='register' element={<Register/>}/>
+            <Route path='login' element={<AuthenticationProtect><Login/></AuthenticationProtect>}/>
+            <Route path='register' element={<AuthenticationProtect><Register/></AuthenticationProtect>}/>
+
+
+            
             <Route path='api/auth/:id/verify/:token' element={<VerifyEmail/>}/>
 
 
             <Route path='shop' element={<Shop/>}/>
             <Route path='shop/:id' element={<ProductDetails/>}/>
             <Route path='cart' element={<Cart/>}/>
-            <Route 
-                path='checkout' 
-                element={
-                <ProductedRoute> 
-                    <Checkout/> 
-                </ProductedRoute>
-            } />
+            <Route path='checkout' element={<ProductedRoute><Checkout/></ProductedRoute>} />
             <Route path='dashboard' element={<DashboardRoute/>}>
                 <Route index element={<Dashboard/>}/>
                 <Route  path='main' element={<Dashboard/>} />
@@ -46,6 +45,7 @@ export const Routers = () => {
             </Route>
 
 
+            <Route path='*' element={<NotFoundPage/>}/>
         </Routes>
     )
 }
