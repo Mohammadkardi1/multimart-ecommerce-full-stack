@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from './redux/store'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css'
 
 
 import App from "./App";
@@ -16,13 +17,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <ToastContainer
-        theme="dark"
-        position="top-right"
-        autoClose={2000}
-        closeOnClick={false}
-        pauseOnHover={false}
-        />
+        <ToastContainer/>
         <App />   
       </BrowserRouter>
     </Provider>

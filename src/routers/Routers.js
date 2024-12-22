@@ -5,7 +5,7 @@ import { Cart } from '../pages/Cart'
 import { ProductDetails } from '../pages/ProductDetails'
 import { Checkout } from '../pages/Checkout'
 import { Login } from '../pages/Login'
-import { Signup } from '../pages/Signup'
+import { Register } from '../pages/Register'
 // import ProtectedRoute from './DashboardRoute'
 import { AddProduct } from '../admin/AddProduct'
 import {AllProduct} from '../admin/AllProduct'
@@ -13,12 +13,19 @@ import { Dashboard } from '../admin/Dashboard'
 import { Users } from '../admin/Users'
 import ProductedRoute from './ProtuctedRoute'
 import DashboardRoute from './DashboardRoute'
+import VerifyEmail from './../pages/VerifyEmail';
 
 export const Routers = () => {
     return (
         <Routes>
             <Route path='/' element={<Navigate to="home"/>}/>
             <Route path='home' element={<Home/>}/>
+
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
+            <Route path='api/auth/:id/verify/:token' element={<VerifyEmail/>}/>
+
+
             <Route path='shop' element={<Shop/>}/>
             <Route path='shop/:id' element={<ProductDetails/>}/>
             <Route path='cart' element={<Cart/>}/>
@@ -37,8 +44,8 @@ export const Routers = () => {
                 <Route path='users' element={<Users/>}/>
                 {/* <Route path='dashboard/orders' element={<Orders/>}/> */}
             </Route>
-            <Route path='login' element={<Login/>}/>
-            <Route path='signup' element={<Signup/>}/>
+
+
         </Routes>
     )
 }

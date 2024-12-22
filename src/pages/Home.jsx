@@ -100,8 +100,8 @@ export const Home =  () => {
                                                 <motion.button 
                                                     whileHover={{scale:1.2}} 
                                                     className="shop__btn  p-2 ">
-                                                    <Link to='/signup' state={{path: location.pathname}}>
-                                                        Signup
+                                                    <Link to='/register' state={{path: location.pathname}}>
+                                                        Register
                                                     </Link>
                                                 </motion.button>
                                                 <motion.button 

@@ -111,8 +111,8 @@ export const Header = () => {
                                                 <Link to='dashboard'>Dashboard</Link>
                                             </div>
                                             : <div className='d-flex align-items-center justify-content-center flex-column'>
-                                                    <Link to='/signup' state={{path: location.pathname}}>
-                                                        Signup
+                                                    <Link to='/register' state={{path: location.pathname}}>
+                                                        Register
                                                     </Link>
                                                     <Link to='/login' state={{path: location.pathname}}>
                                                         Login
