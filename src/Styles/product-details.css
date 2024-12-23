@@ -48,7 +48,7 @@
 .form__group {
     margin-bottom: 30px;
 }
-.form__group input,
+.form__group input, .form__group select, 
 .form__group textarea {
     width: 100%;
     border: 1px solid var(--primary-color);

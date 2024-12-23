@@ -56,6 +56,6 @@
     padding: 10px 15px;
     border-radius: 5px;
 }
-.admin__menu-list .admin__menu-item a[index="0"] {
+.admin__menu-list .admin__menu-item .nav__active {
     background: white
 }

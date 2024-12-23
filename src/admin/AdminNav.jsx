@@ -44,7 +44,7 @@ export const AdminNav = () => {
                                 </Link>
                             </div>
                             <div className='admin__nav-top-right '>
-                                <img src={loggedInUser ?  loggedInUser.photoURL : userIcon  } />
+                                <img src={loggedInUser?.photoURL ?  loggedInUser?.photoURL : userIcon } />
                             </div>
                         </div>
                     </Container>
@@ -54,18 +54,14 @@ export const AdminNav = () => {
                 <Container>
                         <div className="admin__navigation">
                             <ul className="admin__menu-list m-0 p-0 flex-column gap-4 flex-md-row gap-md-0">
-                                {
-                                    admin__nav.map((item, index) => (
-                                        <li className='admin__menu-item' key={index}>
-                                            <NavLink 
-                                                to={item.path}
-                                                index={index}
-                                                className={(navClass) => navClass.isActive ? "nav__active" : ""}>
-                                                {item.display}
-                                            </NavLink>
-                                        </li>
-                                    ))
-                                }
+                                {admin__nav.map((item, index) => (
+                                    <li className='admin__menu-item' key={index}>
+                                        <NavLink to={item.path} index={index}
+                                            className={(navClass) => navClass.isActive ? "nav__active" : ""}>
+                                            {item.display}
+                                        </NavLink>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                 </Container>

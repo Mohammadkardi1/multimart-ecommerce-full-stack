@@ -3,7 +3,7 @@ import { Helmet } from '../components/Helmet/Helmet'
 import { Form, FormGroup } from 'reactstrap'
 import { Link} from 'react-router-dom'
 import '../Styles/login.css'
-import { usernameValidator, emailValidator, passwordValidator } from '../utils/validator'
+import { nameValidator, emailValidator, passwordValidator } from '../utils/validator'
 
 
 import {  useForm } from 'react-hook-form'
@@ -61,18 +61,18 @@ export const Register = () => {
                                 <FormGroup className='form__group'>
                                     <label className="text-white d-block mb-1 text-start">Name</label>
                                     <input type="text" placeholder='Username'
-                                        {...register("username", usernameValidator)}/>
-                                        <p className={`mt-2 text-start error-message ${errors.username?.message ? "visible" : "invisible"}`}>
-                                            {errors.username?.message}
-                                        </p>
+                                        {...register("username", nameValidator)}/>
+                                    <p className={`mt-2 text-start error-message ${errors.username?.message ? "visible" : "invisible"}`}>
+                                        {errors.username?.message}
+                                    </p>
                                 </FormGroup>
                                 <FormGroup className='form__group'>
                                     <label className="text-white d-block mt-2 mb-1 text-start">Email</label>
                                     <input type="text" placeholder='Enter your email'
                                         {...register('email', emailValidator)}/>
-                                        <p className={`mt-2 text-start error-message ${errors.email?.message ? "visible" : "invisible"}`}>
-                                            {errors.email?.message}
-                                        </p>
+                                    <p className={`mt-2 text-start error-message ${errors.email?.message ? "visible" : "invisible"}`}>
+                                        {errors.email?.message}
+                                    </p>
                                 </FormGroup>
                                 <FormGroup className='form__group'>
                                     <label className="text-white d-block mt-2 mb-1 text-start">Password</label>

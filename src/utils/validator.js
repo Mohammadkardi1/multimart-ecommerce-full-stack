@@ -1,4 +1,4 @@
-export const usernameValidator =  {
+export const nameValidator =  {
     required: "Enter your name",
     minLength: {
         value: 4,
@@ -73,7 +73,8 @@ export const imageTypeValidator = (value) => {
 //     return true;
 // }
 
-export const productPriceValidator = {
+export const priceValidator = {
+  required:"Enter Price",
   min: {
     value: 0.01, 
     message: "Ticket price must be at least $0.01",
