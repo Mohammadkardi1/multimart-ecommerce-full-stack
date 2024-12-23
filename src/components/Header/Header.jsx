@@ -50,6 +50,7 @@ export const Header = () => {
 
     const logoutHandler = () => {
         dispatch(authThunks.logout())
+        profileActionRef.current.classList.toggle('show__profileActions')
     }
 
     return (
@@ -84,19 +85,20 @@ export const Header = () => {
                             <span className='badge'>{totalQuantity}</span>
                         </span>
                         <div className='profile'>
-                            <motion.img whileHover={{scale: 1.2}} src={loggedInUser? loggedInUser.photoURL : userIcon} 
-                                onClick={toggleProfileActions} />
-                            <div className='profile__actions' ref={profileActionRef}onClick={toggleProfileActions}>
+                            <motion.img whileHover={{scale: 1.2}} onClick={toggleProfileActions} src={loggedInUser?.photoURL ? loggedInUser?.photoURL : userIcon} 
+                                 />
+                            <div className='profile__actions' ref={profileActionRef}>
                                 {loggedInUser ? 
-                                    <div className="d-flex align-items-center justify-content-center flex-column">
-                                        <Link to='/dashboard'>Dashboard</Link>
-                                        <span onClick={logoutHandler}>Logout</span> 
-                                    </div>: 
-                                    <div className='d-flex align-items-center justify-content-center flex-column'>
-                                        <Link to='/register' state={{path: location.pathname}}>Register</Link>
-                                        <Link to='/login' state={{path: location.pathname}}>Login</Link>
-                                        <Link to='/dashboard'>Dashboard</Link>
-                                    </div>
+                                <div className="d-flex align-items-center justify-content-center flex-column">
+                                    {loggedInUser?.role === "Seller" ? 
+                                    <Link to='/dashboard' onClick={toggleProfileActions}>Dashboard</Link>: null 
+                                    }
+                                    <Link to='#' onClick={logoutHandler}>Logout</Link> 
+                                </div>: 
+                                <div className='d-flex align-items-center justify-content-center flex-column'>
+                                    <Link to='/login' onClick={toggleProfileActions} state={{path: location.pathname}}>Login</Link>
+                                    <Link to='/register' onClick={toggleProfileActions} state={{path: location.pathname}}>Register</Link>
+                                </div>
                                 }
                             </div>
                         </div>

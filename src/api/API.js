@@ -35,7 +35,7 @@ export const authAPI = {
 }
 
 // Doctor-related API calls
-export const doctorAPI = {
+export const productAPI = {
 //   fetchDoctors: () => API.get(`${PRODUCT_PATH}/fetchDoctors`),
 //   fetchDoctor: (doctorID) => API.get(`${PRODUCT_PATH}/fetchDoctor/${doctorID}`),
 //   updateDoctor: (loggedInUser) => API.patch(`${PRODUCT_PATH}/updateDoctor/${loggedInUser._id}`, loggedInUser),

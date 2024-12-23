@@ -13,9 +13,11 @@ import { Dashboard } from '../admin/Dashboard'
 import { Users } from '../admin/Users'
 import ProductedRoute from './ProtuctedRoute'
 import DashboardRoute from './DashboardRoute'
-import VerifyEmail from './../pages/VerifyEmail';
+import VerifyEmail from '../pages/VerifyEmail';
 import AuthenticationProtect from './AuthenticationProtect'
-import NotFoundPage from './../pages/NotFoundPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import { Orders } from '../admin/Orders';
+import AuthorizationProtect from './AuthorizationProtect';
 
 export const Routers = () => {
     return (
@@ -35,7 +37,8 @@ export const Routers = () => {
             <Route path='shop/:id' element={<ProductDetails/>}/>
             <Route path='cart' element={<Cart/>}/>
             <Route path='checkout' element={<ProductedRoute><Checkout/></ProductedRoute>} />
-            <Route path='dashboard' element={<DashboardRoute/>}>
+            <Route path='dashboard' element={
+                <AuthorizationProtect allowedRoles={['Seller']}><DashboardRoute/></AuthorizationProtect>}>
                 <Route index element={<Dashboard/>}/>
                 <Route  path='main' element={<Dashboard/>} />
                 <Route path='all-products' element={<AllProduct/>}/>

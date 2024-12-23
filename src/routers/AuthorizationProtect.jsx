@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 const AuthorizationProtect = ({children, allowedRoles}) => {
 
     const loggedInUser = JSON.parse(localStorage.getItem('profile'))
-    const isAllowed = allowedRoles.includes(loggedInUser?.role)
+    const isAllowed = allowedRoles.includes(loggedInUser?.data?.role)
 
   return isAllowed ? children : <Navigate to='/login' replace={true}/>
   

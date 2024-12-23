@@ -31,6 +31,7 @@ export const Home =  () => {
     const { loggedInUser } = useSelector(state => state.auth)
 
 
+
     useEffect(() => {
         const filterTrendingProducts = products.filter(item => item.category === 'chair')
         setTrendingProducts(filterTrendingProducts)
@@ -83,20 +84,21 @@ export const Home =  () => {
                                 <motion.button whileHover={{scale:1.2}} className="shop__btn  p-2 " onClick={logoutHandler}>
                                         Logout
                                 </motion.button>
+                                {loggedInUser?.role === "Seller" ? 
                                 <motion.button whileHover={{scale:1.2}} className="shop__btn p-2 ">
                                     <Link to='/dashboard'>Dashboard</Link>
                                 </motion.button>
+                                : null
+                                }
                             </div>
                             : 
                             <div className='d-flex align-items-center  flex-row gap-3'>
-                                
+                                <motion.button whileHover={{scale:1.2}} className="shop__btn p-2 ">
+                                    <Link to='/login' state={{path: location.pathname}}>Login</Link>
+                                </motion.button>    
                                 <motion.button whileHover={{scale:1.2}} className="shop__btn  p-2 ">
                                     <Link to='/register' state={{path: location.pathname}}>Register</Link>
                                 </motion.button>
-                                <motion.button whileHover={{scale:1.2}} className="shop__btn p-2 ">
-                                    <Link to='/login' state={{path: location.pathname}}>Login</Link>
-                                </motion.button>
-
 
                                 {/* <motion.button whileHover={{scale:1.2}} className="shop__btn p-2 ">
                                     <Link to='/dashboard'>Dashboard</Link>

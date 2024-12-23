@@ -8,6 +8,7 @@ import {emailValidator} from './../utils/validator'
 import { useSelector, useDispatch } from 'react-redux';
 import { showToastSuccess } from './../utils/toastUtils';
 import { loginUser } from '../redux/thunks/authThunks'
+import { authThunks } from './../redux/slices/authSlice';
 
 
 
@@ -28,7 +29,9 @@ export const Login = () => {
 
     useEffect(()=> {
         window.scrollTo(0,0)
-    })
+        dispatch(authThunks.clearAuthError())
+    }, [])
+
 
     const loginHandler = async (userInfo) => {
         try {

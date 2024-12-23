@@ -118,11 +118,12 @@ export const AddProduct = () => {
                                         className='w-100 p-2'
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}>
-                                        <option value="chair" >Chair</option>
-                                        <option value="sofa">Sofa</option>
-                                        <option value="mobile">Mobile</option>
-                                        <option value="watch">Watch</option>
-                                        <option value="wireless">Wireless</option>
+                                        <option disabled >Select Category</option>
+                                        <option value="Chair" >Chair</option>
+                                        <option value="Sofa">Sofa</option>
+                                        <option value="Mobile">Mobile</option>
+                                        <option value="Watch">Watch</option>
+                                        <option value="Wireless">Wireless</option>
                                     </select>
                                 </FormGroup>
                             </div>

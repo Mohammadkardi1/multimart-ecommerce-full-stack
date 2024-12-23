@@ -6,15 +6,11 @@ import { registerUser, verifyEmail, loginUser } from './../thunks/authThunks';
 const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
     builder
         .addCase(asyncThunk.pending, (state) => {
-            console.log("pending is running")
-
             state.authLoading = true
             state.authError = null
 
         })
         .addCase(asyncThunk.fulfilled, (state, action) => { 
-            console.log("fulfilled is running")
-
             state.authLoading = false
             state.authError = null
             switch (stateKey) {
@@ -30,8 +26,6 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
             }
         })
         .addCase(asyncThunk.rejected, (state, action) => {
-            console.log("rejected is running")
-
             state.authLoading = false
             state.authError = action?.payload || 'Something went wrong'         
             switch (stateKey) {

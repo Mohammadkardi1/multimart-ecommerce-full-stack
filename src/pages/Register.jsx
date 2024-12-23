@@ -20,7 +20,11 @@ export const Register = () => {
 
     const dispatch = useDispatch()
     const { authError, authLoading } = useSelector((state) => state.auth)
-    const {register, handleSubmit, formState: {errors} } = useForm()
+    const {register, handleSubmit, formState: {errors} } = useForm({
+        defaultValues: {
+            role: ""
+        }
+    })
 
 
     useEffect(()=> {
@@ -78,8 +82,24 @@ export const Register = () => {
                                         {errors.password?.message}
                                     </p>
                                 </FormGroup>
+
+
+                                <FormGroup  className='form__group  text-start'>
+                                    <label className="text-white d-block text-start">Role</label>
+                                    <select className="text-textColor font-semibold text-[15px] leading-7 pr-4 py-1 focus:outline-none cursor-pointer"
+                                        {...register("role", { required: 'Select a role' })}>
+                                            <option value="" disabled>Choose an option</option>
+                                            <option value="Customer">Customer</option>
+                                            <option value="Seller">Seller</option>
+                                    </select>
+                                    <p className={`plain-text text-red-600 mt-2 ${errors?.role?.message ? "visible" : "invisible"}`}>
+                                        {errors?.role?.message}.
+                                    </p>
+                                </FormGroup>
+
+
                                 <FormGroup  className='form__group'>
-                                    <label className="text-white d-block mt-5 text-start">Choose your profile picture</label>
+                                    <label className="text-white d-block mt-3 text-start">Choose your profile picture</label>
                                     <input type="file"
                                         {...register("photoURL", {
                                             // required: "Select a Photo",

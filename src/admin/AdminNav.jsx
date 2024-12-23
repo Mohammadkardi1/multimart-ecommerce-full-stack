@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import useAuth from '../custom-hooks/UseAuth'
 import '../Styles/admin-nav.css'
 import {NavLink , Link } from 'react-router-dom'
 import userIcon from '../assets/images/user-icon.png'
+import { useSelector } from 'react-redux';
 
 
 const admin__nav = [
@@ -29,8 +29,9 @@ const admin__nav = [
 
 export const AdminNav = () => {
 
-    const {currentUser} = useAuth()
-
+    const { loggedInUser } = useSelector(state => state.auth )
+    
+    
     return (
         <> 
             <header className='admin__header'>
@@ -43,8 +44,7 @@ export const AdminNav = () => {
                                 </Link>
                             </div>
                             <div className='admin__nav-top-right '>
-                                <img src={currentUser ?  currentUser.photoURL :userIcon  } 
-                                    alt="" />
+                                <img src={loggedInUser ?  loggedInUser.photoURL : userIcon  } />
                             </div>
                         </div>
                     </Container>
