@@ -11,3 +11,46 @@ export const addProduct = createAsyncThunk('product/addProduct', async (productI
   }
 }
 )
+
+
+export const getTrendingProducts = createAsyncThunk('product/getTrendingProducts', async (count, { rejectWithValue }) => {
+  try {
+    return await productAPI.getRandomProducts(count).then((response) => response.data) 
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})
+
+export const getBestSalesProducts = createAsyncThunk('product/getBestSalesProducts', async (count, {rejectWithValue}) => {
+  try {
+    return await productAPI.getRandomProducts(count).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})
+
+export const getMobileProducts = createAsyncThunk('product/getMobileProducts', async (count, {rejectWithValue}) => {
+  try {
+    return await productAPI.getRandomProducts(count).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})
+
+export const getWirelessProducts = createAsyncThunk('product/getWirelessProducts', async (count, {rejectWithValue}) => {
+  try {
+    return await productAPI.getRandomProducts(count).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})
+
+export const getPopularProducts = createAsyncThunk('product/getPopularProducts', async (count, {rejectWithValue}) => {
+  try {
+    return await productAPI.getRandomProducts(count).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})
+
+

@@ -1,24 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addProduct } from './../thunks/productThunks';
+import { addProduct, getTrendingProducts, getBestSalesProducts, getMobileProducts, getWirelessProducts, getPopularProducts } from './../thunks/productThunks';
 
 
-
-
-// const updateLocalStorageDataField = (updatedData) => {
-//     const storedProfile = JSON.parse(localStorage.getItem('profile'))
-
-//     if (storedProfile?.data?.role === 'Seller') {
-//         if (storedProfile) {
-//             const updatedProfile = {
-//                 ...storedProfile,
-//                 data: updatedData, 
-//             }
-//             localStorage.setItem('profile', JSON.stringify(updatedProfile));
-//         } else {
-//             console.log('No profile data found in localStorage.')
-//         }
-//     }
-// }
 
 
 const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
@@ -44,31 +27,23 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
                 case "addProduct": 
                     state.product = action?.payload?.data
                     break
-
-
-                // case "fetchProduct": 
-                //     state.product = action?.payload?.data
-                //     break
-                
-                
-                // case "fetchProducts": 
-                //     state.products = action?.payload?.data
-                //     break
-
-
-                // case "deleteProduct": 
-                //     localStorage.clear()
-                //     break
-
-                // case "submitReview": 
-                //     state.product = action?.payload?.data
-                //     updateLocalStorageDataField({...action?.payload?.data})
-                //     break
-
-                // case "searchProducts":
-                //     state.products = action?.payload?.data
-                //     break
-
+                case "getTrendingProducts": 
+                    state.trendingProducts = action?.payload?.data
+                    break
+                case "getBestSalesProducts": 
+                    state.bestSalesProducts = action?.payload?.data
+                    break
+                case "getMobileProducts": 
+                    state.mobileProducts = action?.payload?.data
+                    break
+                case "getWirelessProducts": 
+                    state.wirelessProducts = action?.payload?.data
+                    break
+                case "getPopularProducts": 
+                    state.popularProducts = action?.payload?.data
+                    break        
+                    
+                    
                 default:
                     break
             }
@@ -87,11 +62,18 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
 
 const initialState = {
     productLoading: false,
-    reviewLoading: '',
     productError: '',
-    reviewError: '',
+    trendingProducts: [],
+    bestSalesProducts: [],
+    mobileProducts: [],
+    wirelessProducts: [],
+    popularProducts: [],
+
+
     products: [],
-    product: {}
+    reviewLoading: '',
+    reviewError: '',
+    product: {},
 }
 
 
@@ -105,7 +87,11 @@ const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         addAsyncThunkCases(builder, addProduct, "addProduct")
-
+        addAsyncThunkCases(builder, getTrendingProducts, "getTrendingProducts")
+        addAsyncThunkCases(builder, getBestSalesProducts, "getBestSalesProducts")
+        addAsyncThunkCases(builder, getMobileProducts, "getMobileProducts")
+        addAsyncThunkCases(builder, getWirelessProducts, "getWirelessProducts")
+        addAsyncThunkCases(builder, getPopularProducts, "getPopularProducts")
 
     }
 })

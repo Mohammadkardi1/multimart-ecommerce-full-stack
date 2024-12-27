@@ -70,7 +70,7 @@ export const Header = () => {
                                 <i className="ri-close-fill display-6" onClick={menuToggle} role="button"></i>
                             </li>
                             {nav__items.map((item, index) => (
-                                <li key={index} className="w-100 text-start py-2 nav__item">
+                                <li key={index} onClick={menuToggle} className="w-100 text-start py-2 nav__item">
                                     <NavLink to={item.path} 
                                         className={(navClass) => navClass.isActive ? "nav__active": ""}>
                                         {item.display}

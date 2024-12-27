@@ -14,8 +14,6 @@ function App() {
 
   const { loggedInUser} = useSelector(state => state.auth )
 
-  console.log(loggedInUser)
-
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('profile'))?.token

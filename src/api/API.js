@@ -35,10 +35,10 @@ export const authAPI = {
 }
 
 
-
+// http://localhost:5000/api/product/randomProducts?count=3
 export const productAPI = {
-  addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo)
-//   fetchDoctors: () => API.get(`${PRODUCT_PATH}/fetchDoctors`),
+  addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo),
+  getRandomProducts: (count) => API.get(`${PRODUCT_PATH}/randomProducts?count=${count}`),
 //   fetchDoctor: (doctorID) => API.get(`${PRODUCT_PATH}/fetchDoctor/${doctorID}`),
 //   updateDoctor: (loggedInUser) => API.patch(`${PRODUCT_PATH}/updateDoctor/${loggedInUser._id}`, loggedInUser),
 //   deleteDoctor: (doctorID) => API.delete(`${PRODUCT_PATH}/deleteDoctor/${doctorID}`),
