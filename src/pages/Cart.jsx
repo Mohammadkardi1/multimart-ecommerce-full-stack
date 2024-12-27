@@ -3,7 +3,6 @@ import { Helmet } from '../components/Helmet/Helmet'
 import '../Styles/cart.css'
 import CommonSection from '../components/UI/CommonSection'
 import { motion } from 'framer-motion'
-import {cartActions} from '../redux/slices/CartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import products from './../assets/data/products';
@@ -14,10 +13,10 @@ export const Cart = () => {
 
     const cartItems = products
     const totalAmount = useSelector(state => state.cart.totalAmount)
-    const totalQuantity = useSelector(state => state.cart.totalQuantity)
+    const totalQuantity = 1
     const dispatch = useDispatch()
     const deletehandler = (item) => {
-        dispatch(cartActions.deleteItem(item.id))
+        console.log("Delete Cart ")
     }
 
     return (

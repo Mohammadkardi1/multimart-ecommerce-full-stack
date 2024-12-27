@@ -1,10 +1,8 @@
 import React from 'react'
-import productImg from '../../assets/images/arm-chair-01.jpg'
 import {motion} from 'framer-motion'
 import '../../Styles/product-card.css'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import {cartActions} from '../../redux/slices/CartSlice'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
 
@@ -14,13 +12,7 @@ const ProductCard = ({item}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const addToCart = () => {
-        dispatch(cartActions.addItem({
-            id: item.id,
-            productName: item.productName,
-            imgUrl: item.imgUrl,
-            price: item.price
-        }))
-        toast.success('product is added successfully');
+        console.log("add To Cart")
     }
 
     const clickHandler = () => {

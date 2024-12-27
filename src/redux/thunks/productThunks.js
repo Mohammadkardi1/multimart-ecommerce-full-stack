@@ -68,3 +68,11 @@ export const getProductByID = createAsyncThunk('product/getProductByID', async (
     return rejectWithValue(error.response.data.message || "Something went wrong") 
   }
 })
+
+export const deleteProduct = createAsyncThunk('product/deleteProduct', async (productID, {rejectWithValue}) => {
+  try {
+    return await productAPI.deleteProduct(productID).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})

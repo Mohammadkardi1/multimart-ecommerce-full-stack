@@ -34,12 +34,12 @@ export const authAPI = {
 
 
 
-// http://localhost:5000/api/product/productByID/676e90f5a73b83c893fa76bb
+// http://localhost:5000/api/product/deleteProduct/67698e59135403e95244e5ab
 export const productAPI = {
   addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo),
   getRandomProducts: (count) => API.get(`${PRODUCT_PATH}/randomProducts?count=${count}`),
   filteredProducts: (queryParams) => API.get(`${PRODUCT_PATH}/filteredProducts?${queryParams}`),
-  getProductByID: (productID) => API.get(`${PRODUCT_PATH}/productByID/${productID}`)
-
+  getProductByID: (productID) => API.get(`${PRODUCT_PATH}/productByID/${productID}`),
+  deleteProduct: (productID) => API.delete(`${PRODUCT_PATH}/deleteProduct/${productID}`),
 
 }

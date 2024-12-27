@@ -10,6 +10,8 @@ import { showToastFailure, showToastSuccess } from './../utils/toastUtils';
 import uploadImageToCloudinary from './../utils/uploadImageToCloudinary';
 import { productThunks } from './../redux/slices/productSlice';
 import LoadingModel from '../components/Model/LoadingModel';
+import { authThunks } from './../redux/slices/authSlice';
+
 
 
 export const AddProduct = () => {
@@ -36,11 +38,8 @@ export const AddProduct = () => {
 
             const res = await dispatch(addProduct(productInfo))
 
-
             if (!res.error) {
-            //   if (doctorID === loggedInUser._id) {
-            //     dispatch(authThunks.syncLocalStorage())
-            //   }
+              dispatch(authThunks.syncLocalStorage())
               reset()
               showToastSuccess("Your product has been submitted successfully!", { position: "top-right", autoClose: 3000 })
             } else {

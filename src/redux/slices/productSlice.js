@@ -1,20 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { addProduct, getTrendingProducts, getBestSalesProducts, getMobileProducts, 
-        getWirelessProducts, getPopularProducts, getFilteredProducts, getProductByID } from './../thunks/productThunks';
+        getWirelessProducts, getPopularProducts, getFilteredProducts, getProductByID, deleteProduct } from './../thunks/productThunks';
 
+
+
+const updateLocalStorageDataField = (updatedData) => {
+    const storedProfile = JSON.parse(localStorage.getItem('profile'))
+
+    if (storedProfile?.data?.role === 'Seller') { // Only seller view mode
+        if (storedProfile) {
+            const updatedProfile = {...storedProfile, data: updatedData, }
+            localStorage.setItem('profile', JSON.stringify(updatedProfile))
+        } else {
+            console.log('No profile data found in localStorage.')
+        }
+    }
+}
+        
 
 
 
 const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
     builder
         .addCase(asyncThunk.pending, (state) => {
-            if (stateKey !== 'submitReview') {
-                state.productLoading = true
-                state.productError = null
-            } else {
-                state.reviewLoading = true
-                state.reviewError = null
-            }
+            state.productLoading = true
+            state.productError = null
         })
         .addCase(asyncThunk.fulfilled, (state, action) => {
             if (stateKey !== 'submitReview') {
@@ -25,9 +35,25 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
             state.productError = null
 
             switch (stateKey) {
+
+
                 case "addProduct": 
+                    updateLocalStorageDataField({...action?.payload?.data})
+                    break
+                case "deleteProduct":
+                    updateLocalStorageDataField({...action?.payload?.data})
+                    break
+    
+                case "getFilteredProducts": 
+                    state.products = action?.payload?.data
+                    break         
+                case "getProductByID":
                     state.product = action?.payload?.data
                     break
+
+
+
+                
                 case "getTrendingProducts": 
                     state.trendingProducts = action?.payload?.data
                     break
@@ -43,11 +69,6 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
                 case "getPopularProducts": 
                     state.popularProducts = action?.payload?.data
                     break        
-                case "getFilteredProducts": 
-                    state.products = action?.payload?.data
-                    break         
-                case "getProductByID":
-                    state.product = action?.payload?.data
 
                 
                 default:
@@ -56,13 +77,9 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
 
         })
         .addCase(asyncThunk.rejected, (state, action) => {
-            if (stateKey !== 'submitReview') {
-                state.productLoading = false
-                state.productError = action?.payload || 'Something went wrong'   
-            } else {
-                state.reviewLoading = false
-                state.reviewError = action?.payload || 'Something went wrong'   
-            }
+            state.productLoading = false
+            state.productError = action?.payload || 'Something went wrong'   
+
         })
 }
 
@@ -71,16 +88,11 @@ const initialState = {
     productError: '',
 
     
-    trendingProducts: [],
-    bestSalesProducts: [],
-    mobileProducts: [],
-    wirelessProducts: [],
-    popularProducts: [],
+    trendingProducts: [], bestSalesProducts: [], mobileProducts: [], wirelessProducts: [], popularProducts: [],
 
 
     products: [],
-    reviewLoading: '',
-    reviewError: '',
+
     product: {},
 }
 
@@ -102,6 +114,7 @@ const productSlice = createSlice({
         addAsyncThunkCases(builder, getPopularProducts, "getPopularProducts")
         addAsyncThunkCases(builder, getFilteredProducts, "getFilteredProducts")
         addAsyncThunkCases(builder, getProductByID, "getProductByID")
+        addAsyncThunkCases(builder, deleteProduct, "deleteProduct")
 
 
     }

@@ -19,10 +19,10 @@ const admin__nav = [
         display:'Add Product',
         path: "/dashboard/add-product"
     },
-    {
-        display:'Users',
-        path: "/dashboard/users"
-    },
+    // {
+    //     display:'Users',
+    //     path: "/dashboard/users"
+    // },
 ]
 
 
@@ -44,7 +44,9 @@ export const AdminNav = () => {
                                 </Link>
                             </div>
                             <div className='admin__nav-top-right '>
-                                <img src={loggedInUser?.photoURL ?  loggedInUser?.photoURL : userIcon } />
+                                <Link to='/home'>
+                                    <img src={loggedInUser?.photoURL ?  loggedInUser?.photoURL : userIcon } />
+                                </Link>
                             </div>
                         </div>
                     </Container>

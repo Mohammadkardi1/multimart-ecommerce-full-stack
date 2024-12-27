@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 
 export const Checkout = () => {
 
-    const totalQuantity = useSelector(state => state.cart.totalQuantity)
+    const totalQuantity = 1
     const totalAmount = useSelector(state => state.cart.totalAmount)
     return (
         <Helmet title={"Checkout"}>

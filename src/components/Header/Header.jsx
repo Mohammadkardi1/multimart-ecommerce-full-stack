@@ -28,7 +28,7 @@ export const Header = () => {
 
     const menuRef = useRef(null)
     const navigate = useNavigate()
-    const totalQuantity = useSelector(state => state.cart.totalQuantity)
+    const totalQuantity = 1
     const profileActionRef = useRef(null)
     const location = useLocation()
     const dispatch = useDispatch()
