@@ -53,4 +53,10 @@ export const getPopularProducts = createAsyncThunk('product/getPopularProducts',
   }
 })
 
-
+export const getFilteredProducts = createAsyncThunk('product/filteredProducts', async (queryParams, {rejectWithValue}) => {
+  try {
+    return await productAPI.filteredProducts(queryParams).then((response) => response.data)
+  } catch (error) {
+    return rejectWithValue(error.response.data.message || "Something went wrong") 
+  }
+})

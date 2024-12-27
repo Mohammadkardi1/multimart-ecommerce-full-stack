@@ -25,8 +25,6 @@ const AUTH_PATH = '/api/auth'
 const PRODUCT_PATH = '/api/product' 
 
 
-
-
 export const authAPI = {
   registerUser: (userInfo) => API.post(`${AUTH_PATH}/register`, userInfo),
   loginUser : (userInfo) => API.post(`${AUTH_PATH}/login`, userInfo),
@@ -35,19 +33,12 @@ export const authAPI = {
 }
 
 
-// http://localhost:5000/api/product/randomProducts?count=3
+// http://localhost:5000/api/product/filteredProducts?sort=Ascending&category=Electronics&searchTerm="product number 5"
 export const productAPI = {
   addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo),
   getRandomProducts: (count) => API.get(`${PRODUCT_PATH}/randomProducts?count=${count}`),
-//   fetchDoctor: (doctorID) => API.get(`${PRODUCT_PATH}/fetchDoctor/${doctorID}`),
-//   updateDoctor: (loggedInUser) => API.patch(`${PRODUCT_PATH}/updateDoctor/${loggedInUser._id}`, loggedInUser),
-//   deleteDoctor: (doctorID) => API.delete(`${PRODUCT_PATH}/deleteDoctor/${doctorID}`),
-//   submitReview: (doctorID, reviewData) => API.post(`${PRODUCT_PATH}/${doctorID}/review`, reviewData), 
-//   searchDoctors: (doctorName) => API.get(`${PRODUCT_PATH}/search?doctorName=${doctorName}`), 
+  filteredProducts: (queryParams) => API.get(`${PRODUCT_PATH}/filteredProducts?${queryParams}`),
+
+
 
 }
-
-// export const patientAPI = {
-//   deletePatient: (patientID) => API.delete(`${PATIENT_PATH}/deletePatient/${patientID}`),
-  
-// }

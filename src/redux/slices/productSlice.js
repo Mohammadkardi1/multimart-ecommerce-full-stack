@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addProduct, getTrendingProducts, getBestSalesProducts, getMobileProducts, getWirelessProducts, getPopularProducts } from './../thunks/productThunks';
+import { addProduct, getTrendingProducts, getBestSalesProducts, getMobileProducts, 
+        getWirelessProducts, getPopularProducts, getFilteredProducts } from './../thunks/productThunks';
 
 
 
@@ -42,7 +43,9 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
                 case "getPopularProducts": 
                     state.popularProducts = action?.payload?.data
                     break        
-                    
+                case "getFilteredProducts": 
+                    state.products = action?.payload?.data
+                    break         
                     
                 default:
                     break
@@ -92,6 +95,8 @@ const productSlice = createSlice({
         addAsyncThunkCases(builder, getMobileProducts, "getMobileProducts")
         addAsyncThunkCases(builder, getWirelessProducts, "getWirelessProducts")
         addAsyncThunkCases(builder, getPopularProducts, "getPopularProducts")
+        addAsyncThunkCases(builder, getFilteredProducts, "getFilteredProducts")
+
 
     }
 })
