@@ -34,7 +34,7 @@ export const Routers = () => {
 
 
             <Route path='shop' element={<Shop/>}/>
-            <Route path='shop/:id' element={<ProductDetails/>}/>
+            <Route path='shop/:productID' element={<ProductDetails/>}/>
             <Route path='cart' element={<Cart/>}/>
             <Route path='checkout' element={<ProductedRoute><Checkout/></ProductedRoute>} />
             <Route path='dashboard' element={

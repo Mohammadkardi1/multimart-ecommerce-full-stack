@@ -33,12 +33,13 @@ export const authAPI = {
 }
 
 
-// http://localhost:5000/api/product/filteredProducts?sort=Ascending&category=Electronics&searchTerm="product number 5"
+
+// http://localhost:5000/api/product/productByID/676e90f5a73b83c893fa76bb
 export const productAPI = {
   addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo),
   getRandomProducts: (count) => API.get(`${PRODUCT_PATH}/randomProducts?count=${count}`),
   filteredProducts: (queryParams) => API.get(`${PRODUCT_PATH}/filteredProducts?${queryParams}`),
-
+  getProductByID: (productID) => API.get(`${PRODUCT_PATH}/productByID/${productID}`)
 
 
 }

@@ -6,6 +6,8 @@ import '../Styles/shop.css'
 import { useDispatch } from 'react-redux';
 import { getFilteredProducts } from './../redux/thunks/productThunks';
 import { useSelector } from 'react-redux';
+import ErrorModel from '../components/Model/ErrorModel'
+import LoadingModel from './../components/Model/LoadingModel';
 
 
 export const Shop = () => {
@@ -17,19 +19,19 @@ export const Shop = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
 
-    const { products } = useSelector(state => state.product)
+    const { products, productLoading, productError } = useSelector(state => state.product)
 
 
     const filterHandler = (e) => {
-        setCategory(e.target.value);
+        setCategory(e.target.value)
     }
 
     const sorthandler = (e) => {
-        setSort(e.target.value);
+        setSort(e.target.value)
     }
 
     const searchHandler = (e) => {
-        setSearchTerm(e.target.value);
+        setSearchTerm(e.target.value)
     }
 
 
@@ -95,13 +97,13 @@ export const Shop = () => {
 
             <section className='pt-5'>
                 <div className="container">
+                    {productLoading && !productError && <LoadingModel styles={"h-[40vh]"}/>}
+                    {productError && !productLoading && <ErrorModel errorMsg={productError} styles={"h-[40vh]"}/> }
+                    {!productLoading && !productError && 
                     <div className="row">
-                        {products ? 
                         <ProductsList data={products}/>
-                        :
-                        <h1 className='text-center fs-4'>No products are found!</h1>
-                        }
                     </div>
+                    }
                 </div>
             </section>
         </Helmet>

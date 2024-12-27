@@ -6,12 +6,13 @@ import { motion } from 'framer-motion'
 import {cartActions} from '../redux/slices/CartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import products from './../assets/data/products';
 
 
 
 export const Cart = () => {
 
-    const cartItems = useSelector(state => state.cart.cartItems)
+    const cartItems = products
     const totalAmount = useSelector(state => state.cart.totalAmount)
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
     const dispatch = useDispatch()
@@ -26,8 +27,7 @@ export const Cart = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-9">
-                            {
-                                cartItems.length === 0 ? <h2 className='fs-4 text-center'>No item added to the cart</h2>
+                            {cartItems.length === 0 ? <h2 className='fs-4 text-center'>No item added to the cart</h2>
                                 : 
                                 <table className='table bordered'>
                                     <thead>

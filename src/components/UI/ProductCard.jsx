@@ -24,7 +24,7 @@ const ProductCard = ({item}) => {
     }
 
     const clickHandler = () => {
-        navigate(`/shop/${item.id}`)
+        navigate(`/shop/${item._id}`)
     }
     return (
         <div className="col-md-4 col-lg-3 bm-2">
