@@ -12,6 +12,12 @@ export const Checkout = () => {
 
     const totalQuantity = 1
     const totalAmount = useSelector(state => state.cart.totalAmount)
+
+
+    const { cartDetails } = useSelector(state => state.cart)
+
+
+
     return (
         <Helmet title={"Checkout"}>
             <CommonSection title={"Checkout"}/>
@@ -48,8 +54,8 @@ export const Checkout = () => {
                         </div>
                         <div className="col-lg-4">
                             <div className="checkout__cart">
-                                <h6>Total Qty: <span>{totalQuantity} items</span></h6>
-                                <h6>Subtotal: <span>${totalAmount}</span></h6>
+                                <h6>Total Qty: <span>{cartDetails?.totalQuantity} items</span></h6>
+                                <h6>Subtotal: <span>${cartDetails?.totalAmount}</span></h6>
                                 <h6>
                                     <span>
                                         Shipping:<br/> 
@@ -57,7 +63,7 @@ export const Checkout = () => {
                                     </span>
                                     <span>$0</span>
                                 </h6>
-                                <h4>Total Cost: <span>${totalAmount}</span></h4>
+                                <h4>Total Cost: <span>${cartDetails?.totalAmount}</span></h4>
                                 <button className="shop__btn auth__btn w-100">
                                     Please an order
                                 </button>

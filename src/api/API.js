@@ -23,23 +23,27 @@ API.interceptors.request.use((req) => {
 
 const AUTH_PATH = '/api/auth'
 const PRODUCT_PATH = '/api/product' 
+const CART_PATH = '/api/cart'
 
 
 export const authAPI = {
   registerUser: (userInfo) => API.post(`${AUTH_PATH}/register`, userInfo),
   loginUser : (userInfo) => API.post(`${AUTH_PATH}/login`, userInfo),
   verifyEmail : (userInfo) => API.get(`${AUTH_PATH}/${userInfo.id}/verify/${userInfo.token}`),
-
 }
 
-
-
-// http://localhost:5000/api/product/deleteProduct/67698e59135403e95244e5ab
 export const productAPI = {
   addProduct: (productInfo) => API.post(`${PRODUCT_PATH}/addProduct`, productInfo),
   getRandomProducts: (count) => API.get(`${PRODUCT_PATH}/randomProducts?count=${count}`),
   filteredProducts: (queryParams) => API.get(`${PRODUCT_PATH}/filteredProducts?${queryParams}`),
   getProductByID: (productID) => API.get(`${PRODUCT_PATH}/productByID/${productID}`),
   deleteProduct: (productID) => API.delete(`${PRODUCT_PATH}/deleteProduct/${productID}`),
+}
+
+// http://localhost:5000/api/cart/add
+export const cartAPI = {
+  addCart: (cartInfo) => API.post(`${CART_PATH}/add`, cartInfo),
+  getUserCart: () => API.get(`${CART_PATH}/userCart`),
+  removeCart: (productID) => API.delete(`${CART_PATH}/remove/${productID}`),
 
 }

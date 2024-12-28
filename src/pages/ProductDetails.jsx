@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CommonSection  from '../components/UI/CommonSection'
 import '../Styles/product-details.css'
@@ -16,9 +16,7 @@ export const ProductDetails = () => {
     const { productID } = useParams()
     const dispatch = useDispatch()
 
-
     const { trendingProducts, product, productError, productLoading } = useSelector(state => state.product)
-
 
     useEffect(()=> {
         dispatch(getProductByID(productID))
@@ -32,14 +30,22 @@ export const ProductDetails = () => {
     }, [productID])
 
 
+    const addToCart = async (productID) => {
+        console.log(productID)
+        // try {
 
+        //     const res = await dispatch(removeCart(productID))
 
-    const addToCart = () => {
-        console.log("add to cart")
+        //     if (!res.error) {
+        //     //   dispatch(authThunks.syncLocalStorage())
+        //       showToastSuccess("The product has been removed successfully!", { position: "top-right", autoClose: 3000 })
+        //     } else {
+        //       showToastFailure("System error! Please try again.", { position: "top-right", autoClose: 3000 })
+        //     }
+        //   } catch (error) {
+        //     console.log(error.message)
+        //   }
     }
-    
-
-
 
     return (
         <Helmet title ={product?.productName}>
@@ -61,10 +67,10 @@ export const ProductDetails = () => {
                                 <h2>{product?.productName}</h2>
                                 <div className='d-flex align-items-center gap-5'>
                                     <span className='product__price'>${product?.price}</span>
-                                    <span>Category: {product?.category}</span>
+                                    <span>{product?.category}</span>
                                 </div>
                                 <p className='mt-3'>{product?.shortDesc}</p>
-                                <motion.button whileHover={{scale:1.1}} className="shop__btn" onClick={addToCart}>
+                                <motion.button whileHover={{scale:1.1}} className="shop__btn" onClick={() => addToCart(product?._id)}>
                                     Add to Cart
                                 </motion.button>
                             </div>
@@ -77,17 +83,17 @@ export const ProductDetails = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="tab__wrapper d-flex align-items-center gap-5">
-                                <h6 className='active__tab'>Description</h6>
+                                <h6 className='active__tab mt-4'>Description</h6>
                             </div>
-                            <div className="tab__content mt-3">
-                                <p>{product?.description}</p>
+                            <div className="tab__content mt-2">
+                                <p className=' text-gray-700'>{product?.description}</p>
                             </div> 
 
 
                         </div>
-                        <div className="col-lg-12 mt-5  text-center">
+                        <div className="col-lg-12 mt-5  text-start">
                             <h2 className="related__title">
-                                You might also like
+                                You may also like
                             </h2>
                         </div>
                         <ProductList data={trendingProducts}/>

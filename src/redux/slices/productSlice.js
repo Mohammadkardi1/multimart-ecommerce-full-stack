@@ -16,8 +16,6 @@ const updateLocalStorageDataField = (updatedData) => {
         }
     }
 }
-        
-
 
 
 const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
@@ -27,33 +25,21 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
             state.productError = null
         })
         .addCase(asyncThunk.fulfilled, (state, action) => {
-            if (stateKey !== 'submitReview') {
-                state.productLoading = false
-            } else {
-                state.reviewLoading = false
-            }
+            state.productLoading = false
             state.productError = null
-
             switch (stateKey) {
-
-
                 case "addProduct": 
                     updateLocalStorageDataField({...action?.payload?.data})
                     break
                 case "deleteProduct":
                     updateLocalStorageDataField({...action?.payload?.data})
                     break
-    
                 case "getFilteredProducts": 
                     state.products = action?.payload?.data
                     break         
                 case "getProductByID":
                     state.product = action?.payload?.data
                     break
-
-
-
-                
                 case "getTrendingProducts": 
                     state.trendingProducts = action?.payload?.data
                     break
@@ -68,31 +54,22 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
                     break
                 case "getPopularProducts": 
                     state.popularProducts = action?.payload?.data
-                    break        
-
-                
+                    break
                 default:
                     break
             }
-
         })
         .addCase(asyncThunk.rejected, (state, action) => {
             state.productLoading = false
             state.productError = action?.payload || 'Something went wrong'   
-
         })
 }
 
 const initialState = {
     productLoading: false,
     productError: '',
-
-    
     trendingProducts: [], bestSalesProducts: [], mobileProducts: [], wirelessProducts: [], popularProducts: [],
-
-
     products: [],
-
     product: {},
 }
 
@@ -116,10 +93,8 @@ const productSlice = createSlice({
         addAsyncThunkCases(builder, getProductByID, "getProductByID")
         addAsyncThunkCases(builder, deleteProduct, "deleteProduct")
 
-
     }
 })
-
 
 
 export const productThunks = productSlice.actions

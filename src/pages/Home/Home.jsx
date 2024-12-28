@@ -9,7 +9,7 @@ import Clock from '../../components/UI/Clock'
 import { useSelector } from 'react-redux';
 import { authThunks } from '../../redux/slices/authSlice';
 import { useDispatch } from 'react-redux'
-import {getTrendingProducts, getBestSalesProducts, getMobileProducts, getWirelessProducts, getPopularProducts } from '../../redux/thunks/productThunks'
+import {getTrendingProducts, getBestSalesProducts, getMobileProducts, getPopularProducts } from '../../redux/thunks/productThunks'
 import { Helmet } from './../../components/Helmet/Helmet';
 import ProductShowcase from './ProductShowcase';
 
@@ -25,21 +25,16 @@ export const Home =  () => {
     const dispatch = useDispatch()
 
     const { loggedInUser } = useSelector(state => state.auth)
-    const { trendingProducts, bestSalesProducts, mobileProducts, wirelessProducts, popularProducts } = useSelector(state => state.product)
+    const { trendingProducts, bestSalesProducts, mobileProducts, popularProducts } = useSelector(state => state.product)
 
-    
 
     useEffect(() => {
         dispatch(getTrendingProducts(4))
         dispatch(getBestSalesProducts(5))
         dispatch(getMobileProducts(2))
-        dispatch(getWirelessProducts(4))
+        // dispatch(getWirelessProducts(4))
         dispatch(getPopularProducts(3))
-
-
     },[])
-
-
 
     const logoutHandler = () => {
         try {
@@ -65,7 +60,7 @@ export const Home =  () => {
                                     SHOP NOW
                                 </Link>
                             </motion.button> */}
-                            {loggedInUser ? 
+                            {loggedInUser?.username ? 
                             <div className="d-flex align-items-center  flex-row gap-3">
                                 {/* <span onClick={logoutHandler}>Logout</span> 
                                 <Link to='/dashboard'>Dashboard</Link> */}

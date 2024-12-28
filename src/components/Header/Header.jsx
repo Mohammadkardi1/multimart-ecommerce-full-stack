@@ -28,14 +28,12 @@ export const Header = () => {
 
     const menuRef = useRef(null)
     const navigate = useNavigate()
-    const totalQuantity = 1
     const profileActionRef = useRef(null)
     const location = useLocation()
     const dispatch = useDispatch()
 
 
     const { loggedInUser } = useSelector(state => state.auth)
-
 
     const navigateToCart = () => {
         navigate('/cart')
@@ -82,13 +80,13 @@ export const Header = () => {
                     <div className="nav__icons">
                         <span className="cart__icon" onClick={navigateToCart}>
                             <i className="ri-shopping-bag-line"></i>
-                            <span className='badge'>{totalQuantity}</span>
+                            <span className='badge'>{loggedInUser?.totalQuantity}</span>
                         </span>
                         <div className='profile'>
                             <motion.img whileHover={{scale: 1.2}} onClick={toggleProfileActions} src={loggedInUser?.photoURL ? loggedInUser?.photoURL : userIcon} 
                                  />
                             <div className='profile__actions' ref={profileActionRef}>
-                                {loggedInUser ? 
+                                {loggedInUser?.username ? 
                                 <div className="d-flex align-items-center justify-content-center flex-column">
                                     {loggedInUser?.role === "Seller" ? 
                                     <Link to='/dashboard' onClick={toggleProfileActions}>Dashboard</Link>: null 

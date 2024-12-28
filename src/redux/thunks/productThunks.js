@@ -9,8 +9,7 @@ export const addProduct = createAsyncThunk('product/addProduct', async (productI
   } catch (error) {
     return rejectWithValue(error.response.data.message || "Something went wrong") 
   }
-}
-)
+})
 
 
 export const getTrendingProducts = createAsyncThunk('product/getTrendingProducts', async (count, { rejectWithValue }) => {

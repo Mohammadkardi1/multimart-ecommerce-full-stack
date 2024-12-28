@@ -4,16 +4,12 @@ import { Layout } from "./components/Layout/Layout";
 import { useDispatch } from 'react-redux';
 import { authThunks } from './redux/slices/authSlice';
 import decodeJWT from './utils/decodeJWT';
-import { useSelector } from 'react-redux';
 
 
 
 function App() {
 
   const dispatch = useDispatch()
-
-  const { loggedInUser} = useSelector(state => state.auth )
-
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('profile'))?.token
