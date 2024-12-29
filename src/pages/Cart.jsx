@@ -53,12 +53,12 @@ export const Cart = () => {
                             <tbody>
                             {loggedInUser?.cart?.map((item, index) => (
                                 <tr key={index}>
-                                    <td><img src={item.productID.imgUrl} alt="" /></td>
-                                    <td>{item.productID.productName}</td>
-                                    <td>{item.price}</td>
-                                    <td>{item.quantity}</td>
+                                    <td><img src={item?.productID?.imgUrl} alt="" /></td>
+                                    <td>{item?.productID?.productName}</td>
+                                    <td>{item?.price}</td>
+                                    <td>{item?.quantity}</td>
                                     <td>
-                                        <div onClick={() => deletehandler(item.productID._id)}>
+                                        <div onClick={() => deletehandler(item?.productID?._id)}>
                                             <motion.i whileTap={{scale:1.5}} className="ri-delete-bin-line"></motion.i>
                                         </div>
                                     </td>

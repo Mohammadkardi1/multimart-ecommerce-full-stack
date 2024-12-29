@@ -42,9 +42,9 @@ export const Users = () => {
                     <tbody>
                     {data.map((item, index) => (
                     <tr key={index}>
-                        <td><img src={item.photoURL} alt=""/></td>
-                        <td>{item.displayName}</td>
-                        <td>{item.email}</td>
+                        <td><img src={item?.photoURL} alt=""/></td>
+                        <td>{item?.displayName}</td>
+                        <td>{item?.email}</td>
                     </tr>
                     ))}
                     </tbody>

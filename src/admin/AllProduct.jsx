@@ -61,14 +61,14 @@ export const AllProduct = () => {
                             {loggedInUser?.products?.map((item, index) => (
                                 <tr key={index}>
                                     <td className=''>
-                                        <img src={item.imgUrl} alt=""/>
+                                        <img src={item?.imgUrl} alt=""/>
                                     </td>
-                                    <td >{item.productName}</td>
-                                    <td>${item.price}</td>
-                                    <td>{item.category}</td>
+                                    <td >{item?.productName}</td>
+                                    <td>${item?.price}</td>
+                                    <td>{item?.category}</td>
                                     <td>
                                         <button className='shop__btn p-1 m-0' style={{'background':"red"}} 
-                                            onClick={() => deleteHandler(item._id)}>
+                                            onClick={() => deleteHandler(item?._id)}>
                                             Delete
                                         </button>
                                     </td>

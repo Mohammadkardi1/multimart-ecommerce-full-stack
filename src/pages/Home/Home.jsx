@@ -30,10 +30,10 @@ export const Home =  () => {
 
     useEffect(() => {
         dispatch(getTrendingProducts(4))
-        dispatch(getBestSalesProducts(5))
-        dispatch(getMobileProducts(2))
+        dispatch(getBestSalesProducts(4))
+        dispatch(getMobileProducts(4))
         // dispatch(getWirelessProducts(4))
-        dispatch(getPopularProducts(3))
+        dispatch(getPopularProducts(4))
     },[])
 
     const logoutHandler = () => {
