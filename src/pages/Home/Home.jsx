@@ -64,7 +64,6 @@ export const Home =  () => {
                             <div className="d-flex align-items-center  flex-row gap-3">
                                 {/* <span onClick={logoutHandler}>Logout</span> 
                                 <Link to='/dashboard'>Dashboard</Link> */}
-                                
                                 <motion.button whileHover={{scale:1.2}} className="shop__btn  p-2 " onClick={logoutHandler}>
                                         Logout
                                 </motion.button>
@@ -83,7 +82,6 @@ export const Home =  () => {
                                 <motion.button whileHover={{scale:1.2}} className="shop__btn  p-2 ">
                                     <Link to='/register' state={{path: location.pathname}}>Register</Link>
                                 </motion.button>
-
                                 {/* <motion.button whileHover={{scale:1.2}} className="shop__btn p-2 ">
                                     <Link to='/dashboard'>Dashboard</Link>
                                 </motion.button> */}
@@ -98,14 +96,8 @@ export const Home =  () => {
             </div>
         </section>
         <Services/>
-
-
-
         <ProductShowcase title="Trending Products" products={trendingProducts} />
         <ProductShowcase title="Best Sales" products={bestSalesProducts} />
-
-
-
         <section className="timer__count p-4 mt-5">
             <div className="container">
                 <div className="row">
@@ -125,8 +117,6 @@ export const Home =  () => {
                 </div>
             </div>
         </section>
-
-
         <ProductShowcase title="New Arivals" products={mobileProducts} />
         {/* <ProductShowcase title="Electronic  Products" products={wirelessProducts} /> */}
         <ProductShowcase title="Popular Products" products={popularProducts} />
