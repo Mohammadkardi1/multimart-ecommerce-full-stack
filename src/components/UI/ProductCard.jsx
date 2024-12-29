@@ -22,7 +22,6 @@ const ProductCard = ({item}) => {
             setIsModelOpen(true)
             return
         }
-
         try {
             const res = await dispatch(addCart({productID, price}))
             if (!res.error) {
