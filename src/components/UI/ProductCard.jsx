@@ -41,7 +41,7 @@ const ProductCard = ({item}) => {
     
     return (
     <>
-        <div className="col-md-4 col-lg-3 bm-2">
+        <div className="col-md-4 col-lg-3 bm-2 mb-6">
             <div className='product__item  '>
                 {/* <div className="product__img" onClick={clickHandler} role='button'>
                     <motion.img whileHover={{scale:1.1}} src={item?.imgUrl} alt="" />

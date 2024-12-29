@@ -111,8 +111,8 @@ export const Home =  () => {
                             <Link to='/shope'>Visit Store</Link>
                         </motion.button>
                     </div>
-                    <div className="col-12 col-lg-6 text-end counter__img">
-                        <img src={counterImg} alt="" />
+                    <div className="col-12 col-lg-6 flex justify-end counter__img">
+                        <img src={counterImg}/>
                     </div>
                 </div>
             </div>

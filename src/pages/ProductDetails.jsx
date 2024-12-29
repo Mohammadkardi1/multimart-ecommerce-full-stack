@@ -24,15 +24,10 @@ export const ProductDetails = () => {
 
     const [isModelOpen, setIsModelOpen] = useState(false)
 
-    useEffect(()=> {
-        dispatch(getProductByID(productID))
-        dispatch(getTrendingProducts(4))
-
-    }, [])
-
-
     useEffect(() => {
         window.scrollTo(0,0)
+        dispatch(getProductByID(productID))
+        dispatch(getTrendingProducts(4))
     }, [productID])
 
 
@@ -59,7 +54,6 @@ export const ProductDetails = () => {
         <Helmet title ={product?.productName}>
             <CommonSection title={product?.productName}/>
 
-
             {productLoading && !productError && <LoadingModel styles={"h-[40vh]"}/>}
 
             {productError && !productLoading && <ErrorModel errorMsg={productError} styles={"h-[40vh]"}/> }
@@ -69,8 +63,14 @@ export const ProductDetails = () => {
             <section className='pt-0 pb-0'>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6"><img src={product?.imgUrl} alt="" /></div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-4 mt-3">
+                        {/* <img src={product?.imgUrl} alt="" /> */}
+                            <div className="aspect-square w-full overflow-hidden rounded-xl">
+                                <img className="object-cover  w-full"
+                                        src={product?.imgUrl}/>
+                            </div>
+                        </div>
+                        <div className="col-lg-8">
                             <div className="product__details">
                                 <h2>{product?.productName}</h2>
                                 <div className='d-flex align-items-center gap-5'>
@@ -95,9 +95,7 @@ export const ProductDetails = () => {
                             </div>
                             <div className="tab__content mt-2">
                                 <p className=' text-gray-700'>{product?.description}</p>
-                            </div> 
-
-
+                            </div>
                         </div>
                         <div className="col-lg-12 mt-5  text-start">
                             <h2 className="related__title">

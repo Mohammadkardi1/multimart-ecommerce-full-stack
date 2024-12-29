@@ -18,9 +18,7 @@ export const Shop = () => {
     const [sort, setSort] = useState('')
     const [searchTerm, setSearchTerm] = useState('')
 
-
     const { products, productLoading, productError } = useSelector(state => state.product)
-
 
     const filterHandler = (e) => {
         setCategory(e.target.value)
@@ -54,10 +52,6 @@ export const Shop = () => {
     }, [category, sort, searchTerm]); 
 
 
-
-
-
-
     return (
         <Helmet title={"Shop"}>
 
@@ -66,20 +60,20 @@ export const Shop = () => {
             <section className="pt-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-6 col-lg-3">
+                        <div className="col-12 col-md-6 col-lg-3 mb-2 mb-lg-0">
                             <div className="filter__widget">
                                 <select onChange={filterHandler}>
-                                    <option disabled>Filter By Category</option>
+                                    <option value="" disabled selected={category === ''}>Filter By Category</option>
                                     <option value="Furniture">Furniture</option>
                                     <option value="Electronics">Electronics</option>
                                     <option value="Accessories">Accessories</option>
                                 </select>
                             </div>
                         </div>
-                        <div className="col-6 col-lg-3 text-end">
+                        <div className="col-12 col-md-6 col-lg-3 mb-2 mb-lg-0 text-md-end">
                             <div className="filter__widget">
-                                <select onChange={sorthandler}>
-                                    <option disabled>Sort By Category</option>
+                                <select onChange={sorthandler }>
+                                    <option value="" disabled  selected={sort === ''}>Sort By Price</option>
                                     <option value="Ascending">Ascending</option>
                                     <option value="Descending">Descending</option>
                                 </select>
@@ -100,7 +94,7 @@ export const Shop = () => {
                     {productLoading && !productError && <LoadingModel styles={"h-[40vh]"}/>}
                     {productError && !productLoading && <ErrorModel errorMsg={productError} styles={"h-[40vh]"}/> }
                     {!productLoading && !productError && 
-                    <div className="row">
+                    <div className="row mb-4">
                         <ProductsList data={products}/>
                     </div>
                     }
