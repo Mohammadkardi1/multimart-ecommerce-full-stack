@@ -10,13 +10,7 @@ import { useSelector } from 'react-redux'
 
 export const Checkout = () => {
 
-    const totalQuantity = 1
-    const totalAmount = useSelector(state => state.cart.totalAmount)
-
-
-    const { cartDetails } = useSelector(state => state.cart)
-
-
+    const { loggedInUser } = useSelector(state => state.auth)
 
     return (
         <Helmet title={"Checkout"}>
@@ -54,8 +48,8 @@ export const Checkout = () => {
                         </div>
                         <div className="col-lg-4">
                             <div className="checkout__cart">
-                                <h6>Total Qty: <span>{cartDetails?.totalQuantity} items</span></h6>
-                                <h6>Subtotal: <span>${cartDetails?.totalAmount}</span></h6>
+                                <h6>Total Qty: <span>{loggedInUser?.totalQuantity} items</span></h6>
+                                <h6>Subtotal: <span>${loggedInUser?.totalAmount}</span></h6>
                                 <h6>
                                     <span>
                                         Shipping:<br/> 
@@ -63,7 +57,7 @@ export const Checkout = () => {
                                     </span>
                                     <span>$0</span>
                                 </h6>
-                                <h4>Total Cost: <span>${cartDetails?.totalAmount}</span></h4>
+                                <h4>Total Cost: <span>${loggedInUser?.totalAmount}</span></h4>
                                 <button className="shop__btn auth__btn w-100">
                                     Please an order
                                 </button>

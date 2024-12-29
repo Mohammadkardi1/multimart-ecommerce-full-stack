@@ -3,7 +3,7 @@ import { Helmet } from '../components/Helmet/Helmet'
 import { Form, FormGroup } from 'reactstrap'
 import { Link} from 'react-router-dom'
 import '../Styles/login.css'
-import { nameValidator, emailValidator, passwordValidator } from '../utils/validator'
+import { nameValidator, emailValidator, passwordValidator, imageTypeValidator } from '../utils/validator'
 
 
 import {  useForm } from 'react-hook-form'
@@ -36,14 +36,12 @@ export const Register = () => {
     const registerHandler = async (userInfo) => {
         dispatch(authThunks.setLoading(true))
         
-        // const photoURL = await uploadImageToCloudinary(userInfo?.photoURL[0])
+        const photoURL = await uploadImageToCloudinary(userInfo?.photoURL[0])
 
-        // userInfo = {...userInfo , photoURL: photoURL.secure_url}
-        userInfo = {...userInfo , photoURL: "aajbsh"}
+        userInfo = {...userInfo , photoURL: photoURL.secure_url}
 
         try {
             const res = await dispatch(registerUser(userInfo))
-
         } catch (error) {
             console.log(error.message)
         }
@@ -102,8 +100,8 @@ export const Register = () => {
                                     <label className="text-white d-block mt-3 text-start">Choose your profile picture</label>
                                     <input type="file"
                                         {...register("photoURL", {
-                                            // required: "Select a Photo",
-                                            // validate: imageTypeValidator
+                                            required: "Select a Photo",
+                                            validate: imageTypeValidator
                                         })}/>
                                     <p className={`mt-2 text-start error-message ${errors.photoURL?.message ? "visible" : "invisible"}`} >
                                         {errors.photoURL?.message}

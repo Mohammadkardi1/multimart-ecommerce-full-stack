@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getUserCart, removeCart, addCart } from './../thunks/cartThunks';
+import { removeCart, addCart } from './../thunks/cartThunks';
 
 
 
@@ -28,16 +28,14 @@ const addAsyncThunkCases = (builder, asyncThunk, stateKey, options = {}) => {
             state.cartError = null
 
             switch (stateKey) {
+
                 case "addCart": 
                     updateLocalStorageDataField({...action?.payload?.data})
                     break
-                case "getUserCart": 
-                    state.cartDetails = action?.payload?.data
-                    break
                 case "removeCart": 
-                    state.cartDetails = action?.payload?.data
+                    updateLocalStorageDataField({...action?.payload?.data})
                     break
-                
+                    
                 default:
                     break
             }
@@ -64,7 +62,6 @@ const cartSlice = createSlice({
 
     },
     extraReducers: (builder) => {
-        addAsyncThunkCases(builder, getUserCart , "getUserCart")
         addAsyncThunkCases(builder, removeCart , "removeCart")
         addAsyncThunkCases(builder, addCart , "addCart")
 

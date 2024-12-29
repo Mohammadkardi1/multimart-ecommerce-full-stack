@@ -7,11 +7,8 @@ import { Link } from 'react-router-dom'
 export const Dashboard = () => {
 
 
-
-
-
-    const getProductsLoading = true
-    const getUsersLoading = true
+    const getProductsLoading = false
+    const getUsersLoading = false
 
 
     useEffect(()=> {
@@ -38,7 +35,7 @@ export const Dashboard = () => {
                         <div className="products__box box">
                             <h6>Total Products</h6>
                             <span className={`${getProductsLoading ? 'invisible': 'visible'}`}>
-                                {"getProductsData.length"}
+                                12
                             </span>
                         </div>
                     </div>
@@ -46,7 +43,7 @@ export const Dashboard = () => {
                         <div className="users__box box">
                             <h6>Total Users</h6>
                             <span className={`${getUsersLoading ? 'invisible': 'visible'}`}>
-                                {"getUsersData.length"}
+                                21
                             </span>
                         </div>
                     </div>

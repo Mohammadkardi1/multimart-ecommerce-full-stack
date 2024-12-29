@@ -11,13 +11,12 @@ import { AddProduct } from '../admin/AddProduct'
 import {AllProduct} from '../admin/AllProduct'
 import { Dashboard } from '../admin/Dashboard'
 import { Users } from '../admin/Users'
-import ProductedRoute from './ProtuctedRoute'
 import DashboardRoute from './DashboardRoute'
 import VerifyEmail from '../pages/VerifyEmail';
 import AuthenticationProtect from './AuthenticationProtect'
 import NotFoundPage from '../pages/NotFoundPage';
 import { Orders } from '../admin/Orders';
-import AuthorizationProtect from './AuthorizationProtect';
+
 
 export const Routers = () => {
     return (
@@ -25,22 +24,24 @@ export const Routers = () => {
             <Route path='/' element={<Navigate to="home"/>}/>
             <Route path='home' element={<Home/>}/>
 
+
+
             <Route path='login' element={<AuthenticationProtect><Login/></AuthenticationProtect>}/>
             <Route path='register' element={<AuthenticationProtect><Register/></AuthenticationProtect>}/>
-
-
-            
-            <Route path='api/auth/:id/verify/:token' element={<VerifyEmail/>}/>
+            <Route path='api/auth/:id/verify/:token' element={<AuthenticationProtect><VerifyEmail/></AuthenticationProtect>}/>
 
 
             <Route path='shop' element={<Shop/>}/>
             <Route path='shop/:productID' element={<ProductDetails/>}/>
             <Route path='cart' element={<Cart/>}/>
-            <Route path='checkout' element={<ProductedRoute><Checkout/></ProductedRoute>} />
-            <Route path='dashboard' element={
-                <AuthorizationProtect allowedRoles={['Seller']}><DashboardRoute/></AuthorizationProtect>}>
-                <Route index element={<Dashboard/>}/>
-                <Route  path='main' element={<Dashboard/>} />
+
+
+            <Route path='checkout' element={<Checkout/>} />
+
+
+            <Route path='dashboard' element={<DashboardRoute/>}>
+                <Route index element={<Navigate to="main" replace />}/>
+                <Route path='main' element={<Dashboard/>} />
                 <Route path='all-products' element={<AllProduct/>}/>
                 <Route path='add-product' element={<AddProduct/>}/>
                 <Route path='users' element={<Users/>}/>

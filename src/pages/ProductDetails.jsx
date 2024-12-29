@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CommonSection  from '../components/UI/CommonSection'
 import '../Styles/product-details.css'
@@ -10,6 +10,10 @@ import { useSelector } from 'react-redux';
 import { getProductByID, getTrendingProducts } from '../redux/thunks/productThunks'
 import LoadingModel from './../components/Model/LoadingModel';
 import ErrorModel from './../components/Model/ErrorModel';
+import { addCart } from './../redux/thunks/cartThunks';
+import { authThunks } from './../redux/slices/authSlice';
+import { showToastFailure, showToastSuccess } from './../utils/toastUtils';
+import { PopUpModel } from './../components/Model/PopUpModel';
 
 export const ProductDetails = () => {
 
@@ -17,6 +21,8 @@ export const ProductDetails = () => {
     const dispatch = useDispatch()
 
     const { trendingProducts, product, productError, productLoading } = useSelector(state => state.product)
+
+    const [isModelOpen, setIsModelOpen] = useState(false)
 
     useEffect(()=> {
         dispatch(getProductByID(productID))
@@ -31,21 +37,23 @@ export const ProductDetails = () => {
 
 
     const addToCart = async (productID) => {
-        console.log(productID)
-        // try {
-
-        //     const res = await dispatch(removeCart(productID))
-
-        //     if (!res.error) {
-        //     //   dispatch(authThunks.syncLocalStorage())
-        //       showToastSuccess("The product has been removed successfully!", { position: "top-right", autoClose: 3000 })
-        //     } else {
-        //       showToastFailure("System error! Please try again.", { position: "top-right", autoClose: 3000 })
-        //     }
-        //   } catch (error) {
-        //     console.log(error.message)
-        //   }
+        if (!JSON.parse(localStorage.getItem('profile'))?.data?._id ) {
+            setIsModelOpen(true)
+            return
+        }
+        try {
+            const res = await dispatch(addCart({productID, price: product.price}))
+            if (!res.error) {
+              dispatch(authThunks.syncLocalStorage())
+              showToastSuccess("The product has been added successfully!", { position: "top-right", autoClose: 3000 })
+            } else {
+              showToastFailure("System error! Please try again.", { position: "top-right", autoClose: 3000 })
+            }
+          } catch (error) {
+            console.log(error.message)
+        }
     }
+
 
     return (
         <Helmet title ={product?.productName}>
@@ -100,6 +108,11 @@ export const ProductDetails = () => {
                     </div>
                 </div>
             </section>
+
+            <PopUpModel
+                isModelOpen={isModelOpen} 
+                setIsModelOpen={setIsModelOpen} 
+                message="Please log in to add this product to your cart."/>
             </>
             }
         </Helmet>

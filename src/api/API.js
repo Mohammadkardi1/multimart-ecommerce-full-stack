@@ -43,7 +43,6 @@ export const productAPI = {
 // http://localhost:5000/api/cart/add
 export const cartAPI = {
   addCart: (cartInfo) => API.post(`${CART_PATH}/add`, cartInfo),
-  getUserCart: () => API.get(`${CART_PATH}/userCart`),
   removeCart: (productID) => API.delete(`${CART_PATH}/remove/${productID}`),
 
 }
